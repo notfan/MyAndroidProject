@@ -1,7 +1,10 @@
 package com.example.xiwen.myapplication;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -10,10 +13,12 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
     public final static String EXTRA_MESSAGE = "com.example.xiwen.myapplication.MESSAGE";
+    static final int PICK_CONTACT_REQUEST = 1;  // The request code
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,5 +66,37 @@ public class MainActivity extends AppCompatActivity {
         String message = editText.getText().toString();
         intent.putExtra(EXTRA_MESSAGE, message);
         startActivity(intent);
+    }
+
+    public void selectContact(View view) {
+        Intent pickContactIntent = new Intent(Intent.ACTION_PICK, Uri.parse("content://contacts"));
+        pickContactIntent.setType(ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE);
+        startActivityForResult(pickContactIntent, PICK_CONTACT_REQUEST);
+    }
+
+    public void shareContact(View view) {
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+        TextView textView = (TextView) findViewById(R.id.phone_number);
+        sendIntent.putExtra(Intent.EXTRA_TEXT,textView.getText());
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode == PICK_CONTACT_REQUEST) {
+            if(resultCode == RESULT_OK) {
+                Uri contactUri = data.getData();
+                String[] projection = {ContactsContract.CommonDataKinds.Phone.NUMBER};
+
+                Cursor cursor = getContentResolver().query(contactUri,projection,null,null,null);
+                cursor.moveToFirst();
+
+                int column = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER);
+                String number = cursor.getString(column);
+
+                TextView textView = (TextView) findViewById(R.id.phone_number);
+                textView.setText(number);
+            }
+        }
     }
 }
