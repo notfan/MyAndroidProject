@@ -8,6 +8,7 @@ import android.provider.ContactsContract;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.ShareActionProvider;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
@@ -19,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
     public final static String EXTRA_MESSAGE = "com.example.xiwen.myapplication.MESSAGE";
     static final int PICK_CONTACT_REQUEST = 1;  // The request code
+    private ShareActionProvider mShareActionProvider;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,13 +37,36 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        Intent intent = getIntent();
+        String action = intent.getAction();
+        String type = intent.getType();
+        if (Intent.ACTION_SEND.equals(action) && type != null) {
+            if ("text/plain".equals(type)) {
+                String sharedText = intent.getStringExtra(Intent.EXTRA_TEXT);
+                if (sharedText != null) {
+                    EditText editText = (EditText) findViewById(R.id.edit_message);
+                    editText.setText(sharedText);
+                }
+            }
+        }
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
+        mShareActionProvider = (ShareActionProvider) menu.findItem(R.id.menu_item_share).getActionProvider();
+        //Intent shareIntent = new Intent(Intent.ACTION_SEND);
+        //shareIntent.setType("image/*");
+        //mShareActionProvider.setShareIntent(shareIntent);
         return true;
+    }
+
+    private void setShareIntent(Intent shareIntent) {
+        if (mShareActionProvider != null) {
+            mShareActionProvider.setShareIntent(shareIntent);
+        }
     }
 
     @Override
@@ -79,6 +104,8 @@ public class MainActivity extends AppCompatActivity {
         sendIntent.setAction(Intent.ACTION_SEND);
         TextView textView = (TextView) findViewById(R.id.phone_number);
         sendIntent.putExtra(Intent.EXTRA_TEXT,textView.getText());
+        sendIntent.setType("text/plain");
+        startActivity(Intent.createChooser(sendIntent,getResources().getText(R.string.send_to)));
     }
 
     @Override
@@ -99,4 +126,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
+
 }
