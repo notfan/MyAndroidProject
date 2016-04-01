@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.ShareActionProvider;
 import android.support.v7.widget.Toolbar;
@@ -56,10 +57,12 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
-        mShareActionProvider = (ShareActionProvider) menu.findItem(R.id.menu_item_share).getActionProvider();
-        //Intent shareIntent = new Intent(Intent.ACTION_SEND);
-        //shareIntent.setType("image/*");
-        //mShareActionProvider.setShareIntent(shareIntent);
+        MenuItem menuItem =  menu.findItem(R.id.menu_item_share);
+        mShareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(menuItem);
+        Intent shareIntent = new Intent(Intent.ACTION_SEND);
+        shareIntent.setType("text/plain");
+        //shareIntent.putExtra(Intent.EXTRA_TEXT,)
+        mShareActionProvider.setShareIntent(shareIntent);
         return true;
     }
 
@@ -105,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
         TextView textView = (TextView) findViewById(R.id.phone_number);
         sendIntent.putExtra(Intent.EXTRA_TEXT,textView.getText());
         sendIntent.setType("text/plain");
-        startActivity(Intent.createChooser(sendIntent,getResources().getText(R.string.send_to)));
+        startActivity(Intent.createChooser(sendIntent, getResources().getText(R.string.send_to)));
     }
 
     @Override
