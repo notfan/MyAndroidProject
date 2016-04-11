@@ -59,10 +59,6 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         MenuItem menuItem =  menu.findItem(R.id.menu_item_share);
         mShareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(menuItem);
-        Intent shareIntent = new Intent(Intent.ACTION_SEND);
-        shareIntent.setType("text/plain");
-        //shareIntent.putExtra(Intent.EXTRA_TEXT,)
-        mShareActionProvider.setShareIntent(shareIntent);
         return true;
     }
 
@@ -126,6 +122,10 @@ public class MainActivity extends AppCompatActivity {
 
                 TextView textView = (TextView) findViewById(R.id.phone_number);
                 textView.setText(number);
+                Intent shareIntent = new Intent(Intent.ACTION_SEND);
+                shareIntent.setType("text/plain");
+                shareIntent.putExtra(Intent.EXTRA_TEXT, number);
+                setShareIntent(shareIntent);
             }
         }
     }
