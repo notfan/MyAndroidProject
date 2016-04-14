@@ -14,11 +14,14 @@
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
+
                 <category android:name="android.intent.category.DEFAULT" />
+
                 <data android:mimeType="text/plain" />
             </intent-filter>
         </activity>
@@ -31,15 +34,44 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.xiwen.myapplication.MainActivity" />
         </activity>
+
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="com.example.xiwen.myapplication.fileprovider"
-            android:grantUriPermissions="true"
-            android:exported="false">
+            android:exported="false"
+            android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/filepaths" />
         </provider>
+
+        <activity
+            android:name=".CheckBoxActivity"
+            android:label="@string/title_activity_check_box"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.xiwen.myapplication.MainActivity" />
+        </activity>
+        <activity
+            android:name=".RadioBoxActivity"
+            android:label="@string/title_activity_radio_box"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.xiwen.myapplication.MainActivity" />
+        </activity>
+        <activity
+            android:name=".SpinnerActivity"
+            android:label="@string/title_activity_spinner"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.xiwen.myapplication.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

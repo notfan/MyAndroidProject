@@ -14,7 +14,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -105,6 +107,21 @@ public class MainActivity extends AppCompatActivity {
         sendIntent.putExtra(Intent.EXTRA_TEXT,textView.getText());
         sendIntent.setType("text/plain");
         startActivity(Intent.createChooser(sendIntent, getResources().getText(R.string.send_to)));
+    }
+
+    public void testCheckBox(View view) {
+        Intent intent = new Intent(this,CheckBoxActivity.class);
+        startActivity(intent);
+    }
+
+    public void testRadioBox(View view) {
+        Intent intent = new Intent(this,RadioBoxActivity.class);
+        startActivity(intent);
+    }
+
+    public void testSpinner(View view) {
+        Intent intent = new Intent(this,SpinnerActivity.class);
+        startActivity(intent);
     }
 
     @Override

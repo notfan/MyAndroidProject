@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:showIn="@layout/activity_radio_box"
+    android:orientation="vertical">
+
+    <RadioGroup
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:checkedButton="@+id/lunch"
+        android:id="@+id/menu">
+        <RadioButton
+            android:text="breakfast"
+            android:id="@+id/breakfast"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent" />
+        <RadioButton
+            android:text="lunch"
+            android:id="@id/lunch"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+        <RadioButton
+            android:text="dinner"
+            android:id="@+id/dinner"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+        <RadioButton
+            android:text="all"
+            android:id="@+id/all"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+    </RadioGroup>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="清除"
+        android:id="@+id/clear"
+        android:onClick="clearRB" />
+
+</LinearLayout>

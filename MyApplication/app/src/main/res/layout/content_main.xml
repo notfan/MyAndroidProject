@@ -56,4 +56,21 @@
 
     </LinearLayout>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RadioBox Test"
+        android:onClick="testRadioBox" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CheckBox Test"
+        android:onClick="testCheckBox" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Spinner Test"
+        android:onClick="testSpinner" />
 </LinearLayout>
