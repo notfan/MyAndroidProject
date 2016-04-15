@@ -124,6 +124,21 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void testAutoComplete(View view) {
+        Intent intent = new Intent(this,AutoCompleteTextViewActivity.class);
+        startActivity(intent);
+    }
+
+    public void testDatePicker(View view) {
+        Intent intent = new Intent(this,DatePickerActivity.class);
+        startActivity(intent);
+    }
+
+    public void testTimePicker(View view) {
+        Intent intent = new Intent(this,TimePickerActivity.class);
+        startActivity(intent);
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(requestCode == PICK_CONTACT_REQUEST) {

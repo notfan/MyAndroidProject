@@ -39,6 +39,11 @@ public class SpinnerActivity extends AppCompatActivity {
         aspnCountries.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner_c.setAdapter(aspnCountries);
 
+        spinner_2 = (Spinner) findViewById(R.id.spinner_2);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+                this, R.array.countries, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner_2.setAdapter(adapter);
     }
 
 }

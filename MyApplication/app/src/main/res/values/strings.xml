@@ -10,4 +10,7 @@
     <string name="title_activity_check_box">CheckBoxActivity</string>
     <string name="title_activity_radio_box">RadioBoxActivity</string>
     <string name="title_activity_spinner">SpinnerActivity</string>
+    <string name="title_activity_auto_complete_text_view">AutoCompleteTextViewActivity</string>
+    <string name="title_activity_date_picker">DatePickerActivity</string>
+    <string name="title_activity_time_picker">TimePickerActivity</string>
 </resources>

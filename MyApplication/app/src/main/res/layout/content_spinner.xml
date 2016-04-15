@@ -20,4 +20,15 @@
         android:drawSelectorOnTop="false"
         />
 
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Spinner_2 From arrays xml file"
+        />
+    <Spinner  android:id="@+id/spinner_2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:drawSelectorOnTop="false"
+        />
+
 </LinearLayout>
