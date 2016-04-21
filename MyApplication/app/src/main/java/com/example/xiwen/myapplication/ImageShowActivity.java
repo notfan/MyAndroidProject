@@ -20,7 +20,7 @@ public class ImageShowActivity extends AppCompatActivity implements
         ViewSwitcher.ViewFactory {
     private LinearLayout hsvGallery;
     private ImageSwitcher mSwitcher;
-    private int nCount = 0;
+    private int bShowGallery = 1;
     private Integer[] images_thumb = {
             R.drawable.sample_thumb_0,
             R.drawable.sample_thumb_1,
@@ -58,25 +58,39 @@ public class ImageShowActivity extends AppCompatActivity implements
                 android.R.anim.fade_in));
         mSwitcher.setOutAnimation(AnimationUtils.loadAnimation(this,
                 android.R.anim.fade_out));
-        mSwitcher.setImageResource(images[nCount]);
+        mSwitcher.setImageResource(images[0]);
+        mSwitcher.setOnClickListener(new ImageSwitcher.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(bShowGallery == 1){
+                    findViewById(R.id.hsv);
+                    bShowGallery = 0;
+                }
+                else{
+                    bShowGallery = 1;
+                }
+            }
+        });
 
         hsvGallery = (LinearLayout) findViewById(R.id.hsvGallery);
-        for (Integer id : images_thumb) {
-            hsvGallery.addView(insertImage(id));
+        for (int i = 0;i < images_thumb.length; i++) {
+            hsvGallery.addView(insertImage(i));
         }
     }
 
-    private View insertImage(Integer id) {
-        LinearLayout layout = new LinearLayout(getApplicationContext());
-        layout.setLayoutParams(new ViewGroup.LayoutParams(60, 60));
-        layout.setGravity(Gravity.CENTER);
-
+    private View insertImage(int nIndex) {
         ImageView imageView = new ImageView(getApplicationContext());
-        //imageView.setLayoutParams(new ViewGroup.LayoutParams(45, 60));
-        imageView.setBackgroundResource(id);
-
-        layout.addView(imageView);
-        return layout;
+        imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+        imageView.setLayoutParams(new ViewGroup.LayoutParams(240, 240));
+        imageView.setImageResource(images_thumb[nIndex]);
+        imageView.setTag(nIndex);
+        imageView.setOnClickListener(new ImageView.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mSwitcher.setImageResource(images[(int)(v.getTag())]);
+            }
+        });
+        return imageView;
     }
     public View makeView() {
         ImageView i = new ImageView(this);
