@@ -13,4 +13,9 @@
     <string name="title_activity_auto_complete_text_view">AutoCompleteTextViewActivity</string>
     <string name="title_activity_date_picker">DatePickerActivity</string>
     <string name="title_activity_time_picker">TimePickerActivity</string>
+    <string name="title_activity_progress_bar">ProgressBarActivity</string>
+    <string name="title_activity_seek_bar">SeekBarActivity</string>
+    <string name="title_activity_rating_bar">RatingBarActivity</string>
+    <string name="title_activity_image_view">ImageViewActivity</string>
+    <string name="title_activity_image_show">ImageShowActivity</string>
 </resources>

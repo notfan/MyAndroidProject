@@ -91,4 +91,34 @@
         android:text="TimePicker Test"
         android:onClick="testTimePicker" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ProgressBar Test"
+        android:onClick="testProgressBar" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SeekBar Test"
+        android:onClick="testSeekBar" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RatingBar Test"
+        android:onClick="testRatingBar" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ImageView Test"
+        android:onClick="testImageView" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ImageSwitcher Gallery"
+        android:onClick="testImageShow" />
+
 </LinearLayout>

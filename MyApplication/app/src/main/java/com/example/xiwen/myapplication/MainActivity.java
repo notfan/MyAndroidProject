@@ -139,6 +139,31 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void testProgressBar(View view) {
+        Intent intent = new Intent(this,ProgressBarActivity.class);
+        startActivity(intent);
+    }
+
+    public void testSeekBar(View view) {
+        Intent intent = new Intent(this,SeekBarActivity.class);
+        startActivity(intent);
+    }
+
+    public void testRatingBar(View view) {
+        Intent intent = new Intent(this,RatingBarActivity.class);
+        startActivity(intent);
+    }
+
+    public void testImageView(View view) {
+        Intent intent = new Intent(this,ImageViewActivity.class);
+        startActivity(intent);
+    }
+
+    public void testImageShow(View view) {
+        Intent intent = new Intent(this,ImageShowActivity.class);
+        startActivity(intent);
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(requestCode == PICK_CONTACT_REQUEST) {

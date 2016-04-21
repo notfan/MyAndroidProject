@@ -99,6 +99,51 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.xiwen.myapplication.MainActivity" />
         </activity>
+        <activity
+            android:name=".ProgressBarActivity"
+            android:label="@string/title_activity_progress_bar"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.xiwen.myapplication.MainActivity" />
+        </activity>
+        <activity
+            android:name=".SeekBarActivity"
+            android:label="@string/title_activity_seek_bar"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.xiwen.myapplication.MainActivity" />
+        </activity>
+        <activity
+            android:name=".RatingBarActivity"
+            android:label="@string/title_activity_rating_bar"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.xiwen.myapplication.MainActivity" />
+        </activity>
+        <activity
+            android:name=".ImageViewActivity"
+            android:label="@string/title_activity_image_view"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.xiwen.myapplication.MainActivity" />
+        </activity>
+        <activity
+            android:name=".ImageShowActivity"
+            android:label="@string/title_activity_image_show"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.xiwen.myapplication.MainActivity" />
+        </activity>
     </application>
 
 </manifest>
