@@ -18,4 +18,6 @@
     <string name="title_activity_rating_bar">RatingBarActivity</string>
     <string name="title_activity_image_view">ImageViewActivity</string>
     <string name="title_activity_image_show">ImageShowActivity</string>
+    <string name="title_activity_grid_view">GridViewActivity</string>
+    <string name="title_activity_tab_demo">TabDemoActivity</string>
 </resources>

@@ -164,6 +164,16 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void testGridView(View view) {
+        Intent intent = new Intent(this,GridViewActivity.class);
+        startActivity(intent);
+    }
+
+    public void testTabDemo(View view) {
+        Intent intent = new Intent(this,TabDemoActivity.class);
+        startActivity(intent);
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(requestCode == PICK_CONTACT_REQUEST) {

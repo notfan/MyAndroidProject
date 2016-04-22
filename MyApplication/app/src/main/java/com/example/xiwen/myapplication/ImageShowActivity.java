@@ -1,13 +1,18 @@
 package com.example.xiwen.myapplication;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.animation.TranslateAnimation;
 import android.widget.FrameLayout;
 import android.widget.Gallery;
 import android.widget.ImageSwitcher;
@@ -21,6 +26,7 @@ public class ImageShowActivity extends AppCompatActivity implements
     private LinearLayout hsvGallery;
     private ImageSwitcher mSwitcher;
     private int bShowGallery = 1;
+    private View hsv;
     private Integer[] images_thumb = {
             R.drawable.sample_thumb_0,
             R.drawable.sample_thumb_1,
@@ -59,16 +65,26 @@ public class ImageShowActivity extends AppCompatActivity implements
         mSwitcher.setOutAnimation(AnimationUtils.loadAnimation(this,
                 android.R.anim.fade_out));
         mSwitcher.setImageResource(images[0]);
-        mSwitcher.setOnClickListener(new ImageSwitcher.OnClickListener() {
+        hsv = findViewById(R.id.hsv);
+        mSwitcher.setOnLongClickListener(new ImageSwitcher.OnLongClickListener() {
             @Override
-            public void onClick(View v) {
-                if(bShowGallery == 1){
-                    findViewById(R.id.hsv);
+            public boolean onLongClick(View v) {
+                if (bShowGallery == 1) {
+                    hsv.animate().alpha(0f).setDuration(500)
+                            .setListener(new AnimatorListenerAdapter() {
+                                @Override
+                                public void onAnimationEnd(Animator animation) {
+                                    hsv.setVisibility(View.INVISIBLE);
+                                }
+                            });
                     bShowGallery = 0;
-                }
-                else{
+                } else {
+                    hsv.setAlpha(0f);
+                    hsv.setVisibility(View.VISIBLE);
+                    hsv.animate().alpha(1f).setDuration(500).setListener(null);
                     bShowGallery = 1;
                 }
+                return true;
             }
         });
 
@@ -80,14 +96,15 @@ public class ImageShowActivity extends AppCompatActivity implements
 
     private View insertImage(int nIndex) {
         ImageView imageView = new ImageView(getApplicationContext());
-        imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-        imageView.setLayoutParams(new ViewGroup.LayoutParams(240, 240));
+        imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        final float scale = getApplicationContext().getResources().getDisplayMetrics().density;
+        imageView.setLayoutParams(new ViewGroup.LayoutParams((int) (60 * scale + 0.5f), (int) (60 * scale + 0.5f)));
         imageView.setImageResource(images_thumb[nIndex]);
         imageView.setTag(nIndex);
         imageView.setOnClickListener(new ImageView.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mSwitcher.setImageResource(images[(int)(v.getTag())]);
+                mSwitcher.setImageResource(images[(int) (v.getTag())]);
             }
         });
         return imageView;

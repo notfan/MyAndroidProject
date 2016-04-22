@@ -121,4 +121,16 @@
         android:text="ImageSwitcher Gallery"
         android:onClick="testImageShow" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="GridView Test"
+        android:onClick="testGridView" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TabDemo Test"
+        android:onClick="testTabDemo" />
+
 </LinearLayout>
