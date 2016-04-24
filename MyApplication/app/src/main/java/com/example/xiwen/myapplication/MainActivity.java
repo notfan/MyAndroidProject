@@ -78,8 +78,12 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch (id) {
+            case R.id.action_settings:
+                return true;
+            case R.id.menu_item_listview:
+                testListView();
+                break;
         }
 
         return super.onOptionsItemSelected(item);
@@ -171,6 +175,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void testTabDemo(View view) {
         Intent intent = new Intent(this,TabDemoActivity.class);
+        startActivity(intent);
+    }
+
+    public void testListView() {
+        Intent intent = new Intent(this,ListViewActivity.class);
         startActivity(intent);
     }
 

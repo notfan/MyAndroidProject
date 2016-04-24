@@ -13,4 +13,8 @@
         app:showAsAction="ifRoom"
         android:title="Share"
         app:actionProviderClass="android.support.v7.widget.ShareActionProvider" />
+    <item
+        android:id="@+id/menu_item_listview"
+        android:title="test ListView"
+        app:showAsAction="ifRoom" />
 </menu>

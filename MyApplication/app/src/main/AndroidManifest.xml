@@ -162,6 +162,50 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.xiwen.myapplication.MainActivity" />
         </activity>
+        <activity
+            android:name=".ListViewActivity"
+            android:label="@string/title_activity_list_view"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.xiwen.myapplication.MainActivity" />
+        </activity>
+        <activity
+            android:name=".ListView1Activity"
+            android:label="@string/title_activity_list_view1"
+            android:parentActivityName=".ListViewActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.xiwen.myapplication.ListViewActivity" />
+        </activity>
+        <activity
+            android:name=".ListView2Activity"
+            android:label="@string/title_activity_list_view2"
+            android:parentActivityName=".ListViewActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.xiwen.myapplication.ListViewActivity" />
+        </activity>
+        <activity
+            android:name=".ListView3Activity"
+            android:label="@string/title_activity_list_view3"
+            android:parentActivityName=".ListViewActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.xiwen.myapplication.ListViewActivity" />
+        </activity>
+        <activity
+            android:name=".ListView4Activity"
+            android:label="@string/title_activity_list_view4"
+            android:parentActivityName=".ListViewActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.xiwen.myapplication.ListViewActivity" />
+        </activity>
     </application>
 
 </manifest>

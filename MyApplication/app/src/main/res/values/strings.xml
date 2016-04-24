@@ -20,4 +20,9 @@
     <string name="title_activity_image_show">ImageShowActivity</string>
     <string name="title_activity_grid_view">GridViewActivity</string>
     <string name="title_activity_tab_demo">TabDemoActivity</string>
+    <string name="title_activity_list_view">ListViewActivity</string>
+    <string name="title_activity_list_view1">ListView1Activity</string>
+    <string name="title_activity_list_view2">ListView2Activity</string>
+    <string name="title_activity_list_view3">ListView3Activity</string>
+    <string name="title_activity_list_view4">ListView4Activity</string>
 </resources>
