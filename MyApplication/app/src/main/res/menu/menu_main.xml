@@ -17,4 +17,8 @@
         android:id="@+id/menu_item_listview"
         android:title="test ListView"
         app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/menu_item_dialog"
+        android:title="test Dialog"
+        app:showAsAction="ifRoom" />
 </menu>

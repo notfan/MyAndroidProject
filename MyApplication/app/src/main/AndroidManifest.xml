@@ -174,7 +174,8 @@
         <activity
             android:name=".ListView1Activity"
             android:label="@string/title_activity_list_view1"
-            android:parentActivityName=".ListViewActivity">
+            android:parentActivityName=".ListViewActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.xiwen.myapplication.ListViewActivity" />
@@ -191,8 +192,7 @@
         <activity
             android:name=".ListView3Activity"
             android:label="@string/title_activity_list_view3"
-            android:parentActivityName=".ListViewActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:parentActivityName=".ListViewActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.xiwen.myapplication.ListViewActivity" />
@@ -205,6 +205,42 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.xiwen.myapplication.ListViewActivity" />
+        </activity>
+        <activity
+            android:name=".DialogDemoActivity"
+            android:label="@string/title_activity_dialog_demo"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.xiwen.myapplication.MainActivity" />
+        </activity>
+        <activity
+            android:name=".ToastAndNotificationActivity"
+            android:label="@string/title_activity_toast_and_notification"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.xiwen.myapplication.MainActivity" />
+        </activity>
+        <activity
+            android:name=".NotificationActivity"
+            android:label="@string/title_activity_notification"
+            android:parentActivityName=".ToastAndNotificationActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.xiwen.myapplication.ToastAndNotificationActivity" />
+        </activity>
+        <activity
+            android:name=".ToastActivity"
+            android:label="@string/title_activity_toast"
+            android:parentActivityName=".ToastAndNotificationActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.xiwen.myapplication.ToastAndNotificationActivity" />
         </activity>
     </application>
 

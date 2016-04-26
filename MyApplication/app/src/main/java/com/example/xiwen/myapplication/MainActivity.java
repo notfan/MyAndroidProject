@@ -84,6 +84,9 @@ public class MainActivity extends AppCompatActivity {
             case R.id.menu_item_listview:
                 testListView();
                 break;
+            case R.id.menu_item_dialog:
+                testDialog();
+                break;
         }
 
         return super.onOptionsItemSelected(item);
@@ -180,6 +183,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void testListView() {
         Intent intent = new Intent(this,ListViewActivity.class);
+        startActivity(intent);
+    }
+
+    public void testDialog() {
+        Intent intent = new Intent(this,DialogDemoActivity.class);
         startActivity(intent);
     }
 

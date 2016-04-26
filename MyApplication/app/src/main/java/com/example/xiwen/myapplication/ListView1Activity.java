@@ -18,10 +18,15 @@ public class ListView1Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        listView = new ListView(this);
+        setContentView(R.layout.activity_list_view1);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, data));
-        setContentView(listView);
     }
 
 }

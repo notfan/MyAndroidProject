@@ -6,8 +6,15 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
 
 public class ListView4Activity extends AppCompatActivity {
+    ListView listView;
+    private String[] data = { "eoeInstaller", "eoeDouban", "eoeWhere",
+            "eoeInfoAssistant", "eoeDakarGame", "eoeTrack" };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,15 +23,28 @@ public class ListView4Activity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        listView = (ListView)findViewById(R.id.listView4);
+        listView.setAdapter(new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_single_choice, data));
+        listView.setItemsCanFocus(true);
+
+        AdapterView.OnItemSelectedListener itemSelectedListener = new AdapterView.OnItemSelectedListener(){
+
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View arg1,
+                                       int position, long arg3) {
+                Toast.makeText(getApplicationContext(), parent.getItemAtPosition(position).toString(),
+                        Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> arg0) {
+                Toast.makeText(getApplicationContext(), "未选中",
+                        Toast.LENGTH_SHORT).show();
+            }
+        };
+        listView.setOnItemSelectedListener(itemSelectedListener);
     }
 
 }

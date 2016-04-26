@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:showIn="@layout/activity_dialog_demo"
+    android:orientation="vertical">
+    <Button android:id="@+id/button1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" android:text="两个button的对话框1"
+        android:onClick="testDialog1" />
+    <Button android:id="@+id/buttons2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" android:text="三个button的对话框2"
+        android:onClick="testDialog2" />
+    <Button android:id="@+id/button3"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" android:text="可以进行输入的对话框"
+        android:onClick="testDialog3" />
+    <Button android:id="@+id/button4"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" android:text="进度框"
+        android:onClick="testDialog4" />
+</LinearLayout>
