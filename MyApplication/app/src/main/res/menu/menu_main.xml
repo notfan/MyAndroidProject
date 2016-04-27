@@ -15,10 +15,14 @@
         app:actionProviderClass="android.support.v7.widget.ShareActionProvider" />
     <item
         android:id="@+id/menu_item_listview"
-        android:title="test ListView"
+        android:title="Test ListView"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/menu_item_dialog"
-        android:title="test Dialog"
+        android:title="Test Dialog"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/menu_item_notification_toast"
+        android:title="Test Notification and Toast"
         app:showAsAction="ifRoom" />
 </menu>

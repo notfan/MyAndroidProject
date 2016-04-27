@@ -87,6 +87,9 @@ public class MainActivity extends AppCompatActivity {
             case R.id.menu_item_dialog:
                 testDialog();
                 break;
+            case R.id.menu_item_notification_toast:
+                testNotificationAndToast();
+                break;
         }
 
         return super.onOptionsItemSelected(item);
@@ -188,6 +191,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void testDialog() {
         Intent intent = new Intent(this,DialogDemoActivity.class);
+        startActivity(intent);
+    }
+
+    public void testNotificationAndToast() {
+        Intent intent = new Intent(this,ToastAndNotificationActivity.class);
         startActivity(intent);
     }
 
