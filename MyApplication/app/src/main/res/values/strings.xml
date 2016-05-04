@@ -41,4 +41,6 @@
     <string name="title_activity_toast_and_notification">ToastAndNotificationActivity</string>
     <string name="title_activity_notification">NotificationActivity</string>
     <string name="title_activity_toast">ToastActivity</string>
+    <string name="title_activity_setting">SettingActivity</string>
+    <string name="title_activity_sqlite">SQLiteActivity</string>
 </resources>

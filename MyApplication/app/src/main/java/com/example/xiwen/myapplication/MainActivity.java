@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
+
     }
 
     @Override
@@ -80,7 +81,8 @@ public class MainActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         switch (id) {
             case R.id.action_settings:
-                return true;
+                testSetting();
+                break;
             case R.id.menu_item_listview:
                 testListView();
                 break;
@@ -196,6 +198,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void testNotificationAndToast() {
         Intent intent = new Intent(this,ToastAndNotificationActivity.class);
+        startActivity(intent);
+    }
+
+    public void testSetting() {
+        Intent intent = new Intent(this,SettingActivity.class);
         startActivity(intent);
     }
 
