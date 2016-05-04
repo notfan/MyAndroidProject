@@ -5,6 +5,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:showIn="@layout/activity_sqlite">
+    tools:showIn="@layout/activity_sqlite"
+    android:orientation="vertical">
+
+    <Button android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:text="插入两条记录" />
+    <Button android:id="@+id/button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:text="删除一条记录" />
+    <Button android:id="@+id/button5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:text="查询数据库" />
+    <Button android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:text="删除数据表" />
+    <Button android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:text="重新建立数据表" />
 
 </LinearLayout>
