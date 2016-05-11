@@ -25,4 +25,20 @@
         android:id="@+id/menu_item_notification_toast"
         android:title="Test Notification and Toast"
         app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/menu_item_sqlite"
+        android:title="test SQLite"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/menu_item_diary"
+        android:title="Diary"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/menu_item_contentprovider"
+        android:title="Test ContentProvider"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/menu_item_diary2"
+        android:title="Diary2"
+        app:showAsAction="ifRoom" />
 </menu>

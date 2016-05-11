@@ -130,4 +130,25 @@ public class SQLiteActivity extends AppCompatActivity {
         Integer num = cur.getCount();
         setTitle(Integer.toString(num) + " 条记录");
     }
+
+    public void testInsert(View view) {
+        insertItem();
+    }
+
+    public void testDelete(View view) {
+        deleteItem();
+    }
+
+    public void testQuery(View view) {
+        showItems();
+    }
+
+    public void testDrop(View view) {
+        dropTable();
+    }
+
+    public void testRecreate(View view) {
+        createTable();
+    }
+
 }

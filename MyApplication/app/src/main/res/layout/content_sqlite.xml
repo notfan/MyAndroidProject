@@ -10,18 +10,23 @@
 
     <Button android:id="@+id/button3"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" android:text="插入两条记录" />
+        android:layout_height="wrap_content" android:text="插入两条记录"
+        android:onClick="testInsert" />
     <Button android:id="@+id/button4"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" android:text="删除一条记录" />
+        android:layout_height="wrap_content" android:text="删除一条记录"
+        android:onClick="testDelete" />
     <Button android:id="@+id/button5"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" android:text="查询数据库" />
+        android:layout_height="wrap_content" android:text="查询数据库"
+        android:onClick="testQuery" />
     <Button android:id="@+id/button2"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" android:text="删除数据表" />
+        android:layout_height="wrap_content" android:text="删除数据表"
+        android:onClick="testDrop" />
     <Button android:id="@+id/button1"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" android:text="重新建立数据表" />
+        android:layout_height="wrap_content" android:text="重新建立数据表"
+        android:onClick="testRecreate" />
 
 </LinearLayout>

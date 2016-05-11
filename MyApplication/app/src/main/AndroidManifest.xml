@@ -2,12 +2,18 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.xiwen.myapplication">
 
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <provider
+            android:name=".DiaryContentProvider"
+            android:authorities="com.example.xiwen.myapplication.diarycontentprovider" />
+
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
@@ -259,6 +265,66 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.xiwen.myapplication.MainActivity" />
+        </activity>
+        <activity
+            android:name=".ContentProviderActivity"
+            android:label="@string/title_activity_content_provider"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.xiwen.myapplication.MainActivity" />
+        </activity>
+        <activity
+            android:name=".DiaryActivity"
+            android:label="@string/title_activity_diary"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.xiwen.myapplication.MainActivity" />
+        </activity>
+        <activity
+            android:name=".DiaryEditActivity"
+            android:label="@string/title_activity_diary_edit"
+            android:parentActivityName=".DiaryActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.xiwen.myapplication.DiaryActivity" />
+        </activity>
+        <activity
+            android:name=".Diary2Activity"
+            android:label="@string/title_activity_diary2"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.xiwen.myapplication.MainActivity" />
+        </activity>
+        <activity
+            android:name=".Diary2EditActivity"
+            android:label="@string/title_activity_diary2_edit"
+            android:parentActivityName=".Diary2Activity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.xiwen.myapplication.Diary2Activity" />
+            <intent-filter >
+                <action android:name="com.example.xiwen.myapplication.ActivityDiaryEditor.EDIT_DIARY" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+                <data
+                    android:mimeType="vnd.android.cursor.item/vnd.google.diary" />
+            </intent-filter>
+
+
+            <intent-filter >
+                <action android:name="com.example.xiwen.myapplication.ActivityDiaryEditor.action.INSERT_DIARY" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+                <data
+                    android:mimeType="vnd.android.cursor.dir/vnd.google.diary" />
+            </intent-filter>
         </activity>
     </application>
 

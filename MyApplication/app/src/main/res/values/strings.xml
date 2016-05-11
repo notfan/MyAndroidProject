@@ -43,4 +43,15 @@
     <string name="title_activity_toast">ToastActivity</string>
     <string name="title_activity_setting">SettingActivity</string>
     <string name="title_activity_sqlite">SQLiteActivity</string>
+    <string name="title_activity_content_provider">contentProviderActivity</string>
+    <string name="title_activity_diary">DiaryActivity</string>
+    <string name="menu_insert">添加一篇新日记</string>
+    <string name="menu_delete">删除一篇日记</string>
+    <string name="title">标题</string>
+    <string name="body">内容</string>
+    <string name="confirm">确定</string>
+    <string name="edit_diary">编辑日记</string>
+    <string name="title_activity_diary_edit">DiaryEditActivity</string>
+    <string name="title_activity_diary2">Diary2Activity</string>
+    <string name="title_activity_diary2_edit">Diary2EditActivity</string>
 </resources>

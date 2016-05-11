@@ -14,9 +14,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -91,6 +89,18 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.menu_item_notification_toast:
                 testNotificationAndToast();
+                break;
+            case R.id.menu_item_sqlite:
+                testSQLite();
+                break;
+            case R.id.menu_item_diary:
+                testDiary();
+                break;
+            case R.id.menu_item_contentprovider:
+                testContentProvider();
+                break;
+            case R.id.menu_item_diary2:
+                testDiary2();
                 break;
         }
 
@@ -201,8 +211,28 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void testSQLite() {
+        Intent intent = new Intent(this,SQLiteActivity.class);
+        startActivity(intent);
+    }
+
     public void testSetting() {
         Intent intent = new Intent(this,SettingActivity.class);
+        startActivity(intent);
+    }
+
+    public void testDiary() {
+        Intent intent = new Intent(this,DiaryActivity.class);
+        startActivity(intent);
+    }
+
+    public void testContentProvider() {
+        Intent intent = new Intent(this,ContentProviderActivity.class);
+        startActivity(intent);
+    }
+
+    public void testDiary2() {
+        Intent intent = new Intent(this,Diary2Activity.class);
         startActivity(intent);
     }
 
