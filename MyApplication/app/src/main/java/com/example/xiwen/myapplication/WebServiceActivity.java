@@ -38,10 +38,10 @@ public class WebServiceActivity extends AppCompatActivity {
         WebServiceTask task = new WebServiceTask();
         task.execute(cityName);
     }
-    class WebServiceTask extends AsyncTask<String,Void,String> {//继承AsyncTask
+    class WebServiceTask extends AsyncTask<String,Void,String> {
 
         @Override
-        protected String doInBackground(String... strings) {//处理后台执行的任务，在后台线程执行
+        protected String doInBackground(String... strings) {
             String result = "";
             String readLine = null;
             String cityName = strings[0];
@@ -72,11 +72,11 @@ public class WebServiceActivity extends AppCompatActivity {
             return result;
         }
 
-        protected void onPostExecute(String result) {//后台任务执行完之后被调用，在ui线程执行
+        protected void onPostExecute(String result) {
             mWeatherTextView.setText(result);
         }
 
-        protected void onPreExecute () {//在 doInBackground(Params...)之前被调用，在ui线程执行
+        protected void onPreExecute () {
             mWeatherTextView.setText("请稍候...");
         }
     }
