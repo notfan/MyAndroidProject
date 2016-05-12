@@ -54,4 +54,5 @@
     <string name="title_activity_diary_edit">DiaryEditActivity</string>
     <string name="title_activity_diary2">Diary2Activity</string>
     <string name="title_activity_diary2_edit">Diary2EditActivity</string>
+    <string name="title_activity_web_service">WebServiceActivity</string>
 </resources>

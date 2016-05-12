@@ -3,6 +3,7 @@
     package="com.example.xiwen.myapplication">
 
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -309,22 +310,30 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.xiwen.myapplication.Diary2Activity" />
-            <intent-filter >
+
+            <intent-filter>
                 <action android:name="com.example.xiwen.myapplication.ActivityDiaryEditor.EDIT_DIARY" />
-                <category
-                    android:name="android.intent.category.DEFAULT" />
-                <data
-                    android:mimeType="vnd.android.cursor.item/vnd.google.diary" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="vnd.android.cursor.item/vnd.google.diary" />
             </intent-filter>
-
-
-            <intent-filter >
+            <intent-filter>
                 <action android:name="com.example.xiwen.myapplication.ActivityDiaryEditor.action.INSERT_DIARY" />
-                <category
-                    android:name="android.intent.category.DEFAULT" />
-                <data
-                    android:mimeType="vnd.android.cursor.dir/vnd.google.diary" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="vnd.android.cursor.dir/vnd.google.diary" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".WebServiceActivity"
+            android:label="@string/title_activity_web_service"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.xiwen.myapplication.MainActivity" />
         </activity>
     </application>
 

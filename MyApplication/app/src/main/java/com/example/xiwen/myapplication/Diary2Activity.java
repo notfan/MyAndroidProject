@@ -47,7 +47,7 @@ public class Diary2Activity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position,
                                     long id) {
                 Uri uri = ContentUris.withAppendedId(getIntent().getData(), id);
-                startActivityForResult(new Intent(Diary2EditActivity.EDIT_DIARY_ACTION, uri), MENU_ITEM_EDIT);
+                startActivity(new Intent(Diary2EditActivity.EDIT_DIARY_ACTION, uri));
             }
         };
         mListView.setOnItemClickListener(listener);
@@ -90,14 +90,14 @@ public class Diary2Activity extends AppCompatActivity {
                 Intent intent0 = new Intent(this, Diary2EditActivity.class);
                 intent0.setAction(Diary2EditActivity.INSERT_DIARY_ACTION);
                 intent0.setData(getIntent().getData());
-                startActivityForResult(intent0, MENU_ITEM_INSERT);
+                startActivity(intent0);
                 return true;
             // 编辑当前数据内容
             case MENU_ITEM_EDIT:
                 Intent intent = new Intent(this, Diary2EditActivity.class);
                 intent.setData(item.getIntent().getData());
                 intent.setAction(Diary2EditActivity.EDIT_DIARY_ACTION);
-                startActivityForResult(intent, MENU_ITEM_EDIT);
+                startActivity(intent);
                 return true;
             // 删除当前数据
             case MENU_ITEM_DELETE:
@@ -111,8 +111,8 @@ public class Diary2Activity extends AppCompatActivity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
+    protected void onResume() {
+        super.onResume();
         renderListView();
     }
 

@@ -41,4 +41,8 @@
         android:id="@+id/menu_item_diary2"
         android:title="Diary2"
         app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/menu_item_webservice"
+        android:title="Test WebService"
+        app:showAsAction="ifRoom" />
 </menu>

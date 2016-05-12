@@ -102,6 +102,9 @@ public class MainActivity extends AppCompatActivity {
             case R.id.menu_item_diary2:
                 testDiary2();
                 break;
+            case R.id.menu_item_webservice:
+                testWebService();
+                break;
         }
 
         return super.onOptionsItemSelected(item);
@@ -233,6 +236,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void testDiary2() {
         Intent intent = new Intent(this,Diary2Activity.class);
+        startActivity(intent);
+    }
+
+    public void testWebService() {
+        Intent intent = new Intent(this,WebServiceActivity.class);
         startActivity(intent);
     }
 
