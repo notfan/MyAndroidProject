@@ -344,18 +344,28 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.xiwen.myapplication.MainActivity" />
         </activity>
-        <receiver android:name="AndroidReceiver1">
+
+        <receiver android:name=".AndroidReceiver1">
             <intent-filter>
-                <action
-                    android:name="com.example.xiwen.myapplication.action.NEW_BROADCAST_1"/>
+                <action android:name="com.example.xiwen.myapplication.action.NEW_BROADCAST_1" />
             </intent-filter>
         </receiver>
-        <receiver android:name="AndroidReceiver2">
+        <receiver android:name=".AndroidReceiver2">
             <intent-filter>
-                <action
-                    android:name="com.example.xiwen.myapplication.action.NEW_BROADCAST_2"/>
+                <action android:name="com.example.xiwen.myapplication.action.NEW_BROADCAST_2" />
             </intent-filter>
         </receiver>
+
+        <activity
+            android:name=".ServiceHolderActivity"
+            android:label="@string/title_activity_service_holder"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.xiwen.myapplication.MainActivity" />
+        </activity>
+        <service android:enabled="true" android:name=".TestService" android:process=":remote" />
     </application>
 
 </manifest>

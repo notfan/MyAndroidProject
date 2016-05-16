@@ -42,7 +42,15 @@
         android:title="Diary2"
         app:showAsAction="ifRoom" />
     <item
+        android:id="@+id/menu_item_broadcast_receiver"
+        android:title="test BroadcastReceiver"
+        app:showAsAction="ifRoom" />
+    <item
         android:id="@+id/menu_item_webservice"
         android:title="Test WebService"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/menu_item_service_holder"
+        android:title="Test ServiceHolder"
         app:showAsAction="ifRoom" />
 </menu>

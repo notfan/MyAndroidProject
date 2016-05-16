@@ -105,6 +105,12 @@ public class MainActivity extends AppCompatActivity {
             case R.id.menu_item_webservice:
                 testWebService();
                 break;
+            case R.id.menu_item_broadcast_receiver:
+                testBroadcastReceiver();
+                break;
+            case R.id.menu_item_service_holder:
+                testServiceHolder();
+                break;
         }
 
         return super.onOptionsItemSelected(item);
@@ -241,6 +247,16 @@ public class MainActivity extends AppCompatActivity {
 
     public void testWebService() {
         Intent intent = new Intent(this,WebServiceActivity.class);
+        startActivity(intent);
+    }
+
+    public void testBroadcastReceiver() {
+        Intent intent = new Intent(this,BroadcastReceiverActivity.class);
+        startActivity(intent);
+    }
+
+    public void testServiceHolder() {
+        Intent intent = new Intent(this,ServiceHolderActivity.class);
         startActivity(intent);
     }
 

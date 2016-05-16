@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:showIn="@layout/activity_service_holder"
+    android:orientation="vertical">
+
+    <TextView android:layout_width="fill_parent"
+        android:layout_height="wrap_content" android:text="Hello, TestServiceHolder" />
+
+
+    <Button android:layout_width="fill_parent"
+        android:layout_height="wrap_content" android:text="Start Service"
+        android:onClick="startTestService" />
+
+    <Button android:layout_width="fill_parent"
+        android:layout_height="wrap_content" android:text="Stop Service"
+        android:onClick="stopTestService" />
+
+    <Button android:layout_width="fill_parent"
+        android:layout_height="wrap_content" android:text="Bind Service"
+        android:onClick="bindTestService" />
+
+    <Button android:layout_width="fill_parent"
+        android:layout_height="wrap_content" android:text="Unbind Service"
+        android:onClick="unbindTestService" />
+
+</LinearLayout>
