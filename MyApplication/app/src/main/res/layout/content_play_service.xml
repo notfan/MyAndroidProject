@@ -5,19 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:showIn="@layout/activity_alarm_service"
+    tools:showIn="@layout/activity_play_service"
     android:orientation="vertical">
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Start Play"
+        android:onClick="startPlay" />
 
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="call_alarm_service"
-        android:onClick="callService" />
-
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Exit"
-        android:onClick="exitService" />
+        android:text="Stop Play"
+        android:onClick="stopPlay" />
 
 </LinearLayout>

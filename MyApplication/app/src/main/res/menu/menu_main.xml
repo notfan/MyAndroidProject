@@ -57,4 +57,8 @@
         android:id="@+id/menu_item_alarm_service"
         android:title="Alarm Service"
         app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/menu_item_play_service"
+        android:title="Play Service"
+        app:showAsAction="ifRoom" />
 </menu>

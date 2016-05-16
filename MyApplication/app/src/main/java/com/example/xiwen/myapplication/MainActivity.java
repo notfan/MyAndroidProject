@@ -114,6 +114,9 @@ public class MainActivity extends AppCompatActivity {
             case R.id.menu_item_alarm_service:
                 testAlarmService();
                 break;
+            case R.id.menu_item_play_service:
+                testPlayService();
+                break;
         }
 
         return super.onOptionsItemSelected(item);
@@ -265,6 +268,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void testAlarmService() {
         Intent intent = new Intent(this,AlarmServiceActivity.class);
+        startActivity(intent);
+    }
+
+    public void testPlayService() {
+        Intent intent = new Intent(this,PlayServiceActivity.class);
         startActivity(intent);
     }
 
