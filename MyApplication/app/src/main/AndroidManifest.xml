@@ -365,7 +365,28 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.xiwen.myapplication.MainActivity" />
         </activity>
-        <service android:enabled="true" android:name=".TestService" android:process=":remote" />
+
+        <service
+            android:name=".TestService"
+            android:enabled="true"
+            android:process=":remote" />
+
+        <activity
+            android:name=".AlarmServiceActivity"
+            android:label="@string/title_activity_alarm_service"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.xiwen.myapplication.MainActivity" />
+        </activity>
+
+        <receiver android:name=".AlarmReceiver"></receiver>
+
+        <service
+            android:name=".NotifyService"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>

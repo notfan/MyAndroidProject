@@ -53,4 +53,8 @@
         android:id="@+id/menu_item_service_holder"
         android:title="Test ServiceHolder"
         app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/menu_item_alarm_service"
+        android:title="Alarm Service"
+        app:showAsAction="ifRoom" />
 </menu>
