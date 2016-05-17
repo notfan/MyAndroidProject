@@ -59,4 +59,5 @@
     <string name="title_activity_service_holder">ServiceHolderActivity</string>
     <string name="service_started">Service Started</string>
     <string name="title_activity_alarm_service">AlarmServiceActivity</string>
+    <string name="title_activity_play_service">PlayServiceActivity</string>
 </resources>
