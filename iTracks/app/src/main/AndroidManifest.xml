@@ -27,7 +27,10 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".SettingActivity"></activity>
+        <activity android:name=".SettingActivity" />
+        <activity android:name=".ShowTrackActivity" />
+        <activity android:name=".NewTrackActivity" />
+        <activity android:name=".HelpActivity"></activity>
     </application>
 
 </manifest>

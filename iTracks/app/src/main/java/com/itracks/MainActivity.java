@@ -46,7 +46,7 @@ public class MainActivity extends ListActivity {
         super.onListItemClick(l, v, position, id);
         Cursor c = mTrackCursor;
         c.moveToPosition(position);
-        Intent i = new Intent(this, ShowTrack.class);
+        Intent i = new Intent(this, ShowTrackActivity.class);
         i.putExtra(TrackDbAdapter.KEY_ROWID, id);
         i.putExtra(TrackDbAdapter.NAME, c.getString(c
                 .getColumnIndexOrThrow(TrackDbAdapter.NAME)));
@@ -86,7 +86,7 @@ public class MainActivity extends ListActivity {
         Intent intent = new Intent();
         switch (item.getItemId()) {
             case MENU_NEW:
-                intent.setClass(MainActivity.this, NewTrack.class);
+                intent.setClass(MainActivity.this, NewTrackActivity.class);
                 startActivity(intent);
                 return true;
             case MENU_CON:
@@ -94,7 +94,7 @@ public class MainActivity extends ListActivity {
                 conTrackService();
                 return true;
             case MENU_SETTING:
-                intent.setClass(MainActivity.this, Setting.class);
+                intent.setClass(MainActivity.this, SettingActivity.class);
                 startActivity(intent);
                 return true;
             case MENU_HELPS:
