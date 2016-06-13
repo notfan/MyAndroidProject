@@ -39,6 +39,7 @@
     <string name="author"><b>作者信息：</b></string>
 
     <!-- 地图展示 -->
+    <string name="normal">普通</string>
     <string name="satellite">卫星</string>
     <string name="traffic">交通</string>
     <string name="street">街景</string>

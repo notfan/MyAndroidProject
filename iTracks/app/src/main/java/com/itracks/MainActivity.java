@@ -9,10 +9,11 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
-public class MainActivity extends ListActivity {
+public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
     public final String TAG = "iTracks";
     private TrackDbAdapter mDbHelper;
     private Cursor mTrackCursor;
@@ -28,6 +29,7 @@ public class MainActivity extends ListActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setTitle(R.string.app_title);
         mDbHelper = new TrackDbAdapter(this);
         mDbHelper.open();
         render_tracks();
@@ -41,9 +43,8 @@ public class MainActivity extends ListActivity {
     }
 
     @Override
-    protected void onListItemClick(ListView l, View v, int position, long id) {
+    public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
         Log.d(TAG, "onListItemClick.");
-        super.onListItemClick(l, v, position, id);
         Cursor c = mTrackCursor;
         c.moveToPosition(position);
         Intent i = new Intent(this, ShowTrackActivity.class);
@@ -82,7 +83,7 @@ public class MainActivity extends ListActivity {
     }
 
     @Override
-    public boolean onMenuItemSelected(int featureId, MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item) {
         Intent intent = new Intent();
         switch (item.getItemId()) {
             case MENU_NEW:
@@ -98,7 +99,7 @@ public class MainActivity extends ListActivity {
                 startActivity(intent);
                 return true;
             case MENU_HELPS:
-                intent.setClass(MainActivity.this, Helps.class);
+                intent.setClass(MainActivity.this, HelpActivity.class);
                 startActivity(intent);
                 return true;
             case MENU_EXIT:
@@ -110,13 +111,15 @@ public class MainActivity extends ListActivity {
 
     private void renderListView() {
         Log.d(TAG, "renderListView.");
+        ListView itemlist = (ListView) findViewById(R.id.itemlist);
         mTrackCursor = mDbHelper.getAllTracks();
         String[] from = new String[] { TrackDbAdapter.NAME,
                 TrackDbAdapter.CREATED ,TrackDbAdapter.DESC};
         int[] to = new int[] { R.id.name, R.id.created ,R.id.desc};
         SimpleCursorAdapter tracks = new SimpleCursorAdapter(this,
                 R.layout.track_row, mTrackCursor, from, to, 0);
-        setListAdapter(tracks);
+        itemlist.setAdapter(tracks);
+        itemlist.setOnItemClickListener(this);
     }
 
     //取DB中记录，显示在列表中
@@ -128,7 +131,7 @@ public class MainActivity extends ListActivity {
     private void conTrackService() {
         Intent i = new Intent("com.iTracks.START_TRACK_SERVICE");
         i.setPackage(this.getPackageName());
-        Long track_id = getListView().getSelectedItemId();
+        Long track_id = ((ListView) findViewById(R.id.itemlist)).getSelectedItemId();
         i.putExtra(LocateDbAdapter.TRACKID, track_id.intValue());
         startService(i);
     }
