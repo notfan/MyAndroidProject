@@ -11,11 +11,15 @@ import android.os.IBinder;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.baidu.location.BDLocation;
+import com.baidu.location.BDLocationListener;
+import com.baidu.location.LocationClient;
+
 public class Track extends Service {
     private static final String TAG = "Track";
 
-    private LocationManager lm;
-    private LocationListener locationListener;
+    LocationClient mLocClient;
+    private BDLocationListener locationListener;
 
     static LocateDbAdapter mlcDbHelper = null;
     private int track_id;
@@ -37,15 +41,9 @@ public class Track extends Service {
         }
         Log.d(TAG, "track_id =" + track_id);
         // ---use the LocationManager class to obtain GPS locations---
-        lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        mLocClient = new LocationClient(this);
         locationListener = new MyLocationListener();
-        try {
-            lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0,
-                    locationListener);
-        } catch (SecurityException se)
-        {
-            se.printStackTrace();
-        }
+        mLocClient.registerLocationListener(locationListener);
         return START_STICKY;
     }
 
@@ -73,11 +71,11 @@ public class Track extends Service {
         return mlcDbHelper;
     }
 
-    protected class MyLocationListener implements LocationListener {
+    protected class MyLocationListener implements BDLocationListener {
 
         @Override
-        public void onLocationChanged(Location loc) {
-            Log.d(TAG, "MyLocationListener::onLocationChanged..");
+        public void onReceiveLocation(BDLocation loc) {
+            Log.d(TAG, "MyLocationListener::onReceiveLocation..");
             if (loc != null) {
                 // //////////
                 if(mlcDbHelper == null){
@@ -85,26 +83,6 @@ public class Track extends Service {
                 }
                 mlcDbHelper.createLocate(track_id,  loc.getLongitude(),loc.getLatitude(), loc.getAltitude());
             }
-        }
-
-
-        @Override
-        public void onProviderDisabled(String provider) {
-            Toast.makeText(
-                    getBaseContext(),
-                    "ProviderDisabled.",
-                    Toast.LENGTH_SHORT).show();		}
-
-        @Override
-        public void onProviderEnabled(String provider) {
-            Toast.makeText(
-                    getBaseContext(),
-                    "ProviderEnabled,provider:"+provider,
-                    Toast.LENGTH_SHORT).show();		}
-
-        @Override
-        public void onStatusChanged(String provider, int status, Bundle extras) {
-            // TODO Auto-generated method stub
         }
     }
 }

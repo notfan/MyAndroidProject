@@ -1,18 +1,31 @@
 package com.itracks;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.location.Location;
+import android.location.LocationListener;
 import android.location.LocationManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
+import com.baidu.location.BDLocation;
+import com.baidu.location.BDLocationListener;
+import com.baidu.location.LocationClient;
+import com.baidu.location.LocationClientOption;
 import com.baidu.mapapi.map.BaiduMap;
+import com.baidu.mapapi.map.MapStatus;
+import com.baidu.mapapi.map.MapStatusUpdate;
+import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
+import com.baidu.mapapi.model.LatLng;
+import com.baidu.mapapi.model.inner.GeoPoint;
 
 public class ShowTrackActivity extends AppCompatActivity {
     private static final int MENU_NEW = Menu.FIRST + 1;
@@ -28,28 +41,58 @@ public class ShowTrackActivity extends AppCompatActivity {
     private BaiduMap mBaiduMap;
     private boolean bShowTraffic = false;
 
+    LocationClient mLocClient;
+    private BDLocationListener locationListener;
+
+    private int track_id;
+    private Long rowId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_track);
+        findViews();
+        centerOnGPSPosition(null);
+        revArgs();
+        //paintLocates();
+        startTrackService();
+    }
+
+    private void startTrackService() {
+        Intent i = new Intent("com.iTracks.START_TRACK_SERVICE");
+        i.putExtra(LocateDbAdapter.TRACKID, track_id);
+        startService(i);
+    }
+
+    private void stopTrackService() {
+        stopService(new Intent("com.iTracks.START_TRACK_SERVICE"));
     }
 
     private void findViews() {
         Log.d(TAG, "find Views");
         // Get the map view from resource file
         mMapView = (MapView) findViewById(R.id.mv);
-        mc = mMapView.getController();
+        mBaiduMap = mMapView.getMap();
 
-        SharedPreferences settings = getSharedPreferences(Setting.SETTING_INFOS, 0);
-        String setting_gps = settings.getString(Setting.SETTING_MAP, "10");
-        mc.setZoom(Integer.parseInt(setting_gps));
+        SharedPreferences settings = getSharedPreferences(SettingActivity.SETTING_INFOS, 0);
+        String setting_gps = settings.getString(SettingActivity.SETTING_MAP, "10");
+        MapStatusUpdate u = MapStatusUpdateFactory.zoomTo(Float.parseFloat(setting_gps));
+        mBaiduMap.animateMapStatus(u);
 
-        // ---use the LocationManager class to obtain GPS locations---
-        lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        // 开启定位图层
+        mBaiduMap.setMyLocationEnabled(true);
+        // 定位初始化
+        mLocClient = new LocationClient(this);
         locationListener = new MyLocationListener();
-        lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0,
-                locationListener);
+        mLocClient.registerLocationListener(locationListener);
+        LocationClientOption option = new LocationClientOption();
+        option.setOpenGps(true); // 打开gps
+        option.setCoorType("bd09ll"); // 设置坐标类型
+        option.setScanSpan(1000);
+        mLocClient.setLocOption(option);
+        mLocClient.start();
     }
+
     public void toggleNormal(View view) {
         mBaiduMap.setMapType(BaiduMap.MAP_TYPE_NORMAL);
     }
@@ -65,20 +108,99 @@ public class ShowTrackActivity extends AppCompatActivity {
     private void centerOnGPSPosition(View view) {
         Log.d(TAG, "centerOnGPSPosition");
         String provider = "gps";
-        LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
-        Location loc = lm.getLastKnownLocation(provider);
-        loc = lm.getLastKnownLocation(provider);
+        BDLocation location = mLocClient.getLastKnownLocation();
+        LatLng ll = new LatLng(location.getLatitude(),
+                location.getLongitude());
+        MapStatus.Builder builder = new MapStatus.Builder();
+        builder.target(ll).zoom(18.0f);
+        mBaiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
+    }
 
-        mDefPoint = new GeoPoint((int) (loc.getLatitude() * 1000000),
-                (int) (loc.getLongitude() * 1000000));
-        mDefCaption = "I'm Here.";
-        mc.animateTo(mDefPoint);
-        mc.setCenter(mDefPoint);
-        mBaiduMap.
-        // show Overlay on map.
-        MyOverlay mo = new MyOverlay();
-        mo.onTap(mDefPoint, mMapView);
-        mMapView.getOverlays().add(mo);
+    private void revArgs() {
+        Log.d(TAG, "revArgs.");
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            String name = extras.getString(TrackDbAdapter.NAME);
+            //String desc = extras.getString(TrackDbAdapter.DESC);
+            rowId = extras.getLong(TrackDbAdapter.KEY_ROWID);
+            track_id = rowId.intValue();
+            Log.d(TAG, "rowId=" + rowId);
+            if (name != null) {
+                setTitle(name);
+            }
+        }
+    }
+
+    protected class MyLocationListener implements BDLocationListener {
+
+        @Override
+        public void onReceiveLocation(BDLocation loc) {
+            Log.d(TAG, "MyLocationListener::onReceiveLocation..");
+            if (loc != null) {
+                Toast.makeText(
+                        getBaseContext(),
+                        "Location changed : Lat: " + loc.getLatitude()
+                                + " Lng: " + loc.getLongitude(),
+                        Toast.LENGTH_SHORT).show();
+                // Set up the overlay controller
+                // mOverlayController = mMapView.createOverlayController();
+                LatLng ll = new LatLng(loc.getLatitude(),
+                        loc.getLongitude());
+                MapStatus.Builder builder = new MapStatus.Builder();
+                builder.target(ll).zoom(18.0f);
+                mBaiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
+                // //////////
+                //if(mlcDbHelper == null){
+                //	mlcDbHelper.open();
+                //}
+                //mlcDbHelper.createLocate(track_id,  loc.getLongitude(),loc.getLatitude(), loc.getAltitude());
+            }
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        menu.add(0, MENU_CON, 0, R.string.menu_con).setIcon(
+                R.drawable.con_track).setAlphabeticShortcut('C');
+        menu.add(0, MENU_DEL, 0, R.string.menu_del).setIcon(R.drawable.delete)
+                .setAlphabeticShortcut('D');
+        menu.add(0, MENU_NEW, 0, R.string.menu_new).setIcon(
+                R.drawable.new_track).setAlphabeticShortcut('N');
+        menu.add(0, MENU_MAIN, 0, R.string.menu_main).setIcon(R.drawable.icon)
+                .setAlphabeticShortcut('M');
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent = new Intent();
+        switch (item.getItemId()) {
+            case MENU_NEW:
+                intent.setClass(this, NewTrackActivity.class);
+                startActivity(intent);
+                return true;
+            case MENU_CON:
+                // TODO: 继续跟踪选择的记录
+                startTrackService();
+                return true;
+            case MENU_DEL:
+                mDbHelper = new TrackDbAdapter(this);
+                mDbHelper.open();
+                if (mDbHelper.deleteTrack(rowId)) {
+                    mDbHelper.close();
+                    intent.setClass(this, MainActivity.class);
+                    startActivity(intent);
+                }else{
+                    mDbHelper.close();
+                }
+                return true;
+            case MENU_MAIN:
+                intent.setClass(this, MainActivity.class);
+                startActivity(intent);
+                break;
+        }
+        return true;
     }
 }
