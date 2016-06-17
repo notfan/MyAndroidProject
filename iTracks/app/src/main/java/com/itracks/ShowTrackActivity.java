@@ -52,10 +52,10 @@ public class ShowTrackActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_track);
         findViews();
-        centerOnGPSPosition(null);
-        revArgs();
+        //centerOnGPSPosition(null);
+        //revArgs();
         //paintLocates();
-        startTrackService();
+        //startTrackService();
     }
 
     private void startTrackService() {
@@ -71,7 +71,7 @@ public class ShowTrackActivity extends AppCompatActivity {
     private void findViews() {
         Log.d(TAG, "find Views");
         // Get the map view from resource file
-        mMapView = (MapView) findViewById(R.id.mv);
+        mMapView = (MapView) findViewById(R.id.bmapView);
         mBaiduMap = mMapView.getMap();
 
         SharedPreferences settings = getSharedPreferences(SettingActivity.SETTING_INFOS, 0);
@@ -80,8 +80,8 @@ public class ShowTrackActivity extends AppCompatActivity {
         mBaiduMap.animateMapStatus(u);
 
         // 开启定位图层
+/*
         mBaiduMap.setMyLocationEnabled(true);
-        // 定位初始化
         mLocClient = new LocationClient(this);
         locationListener = new MyLocationListener();
         mLocClient.registerLocationListener(locationListener);
@@ -91,6 +91,7 @@ public class ShowTrackActivity extends AppCompatActivity {
         option.setScanSpan(1000);
         mLocClient.setLocOption(option);
         mLocClient.start();
+*/
     }
 
     public void toggleNormal(View view) {
