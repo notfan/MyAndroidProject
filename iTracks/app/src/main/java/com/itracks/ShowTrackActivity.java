@@ -24,6 +24,7 @@ import com.baidu.mapapi.map.MapStatus;
 import com.baidu.mapapi.map.MapStatusUpdate;
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
+import com.baidu.mapapi.map.MyLocationData;
 import com.baidu.mapapi.model.LatLng;
 import com.baidu.mapapi.model.inner.GeoPoint;
 
@@ -37,7 +38,7 @@ public class ShowTrackActivity extends AppCompatActivity {
     private LocateDbAdapter mlcDbHelper;
 
     private static final String TAG = "ShowTrack";
-    private static MapView mMapView;
+    private MapView mMapView;
     private BaiduMap mBaiduMap;
     private boolean bShowTraffic = false;
 
@@ -47,25 +48,26 @@ public class ShowTrackActivity extends AppCompatActivity {
     private int track_id;
     private Long rowId;
 
+    boolean isFirstLoc = true; // 是否首次定位
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_track);
         findViews();
-        //centerOnGPSPosition(null);
-        //revArgs();
+        revArgs();
         //paintLocates();
-        //startTrackService();
+        startTrackService();
     }
 
     private void startTrackService() {
         Intent i = new Intent("com.iTracks.START_TRACK_SERVICE");
         i.putExtra(LocateDbAdapter.TRACKID, track_id);
-        startService(i);
+        startService(i.setPackage(this.getPackageName()));
     }
 
     private void stopTrackService() {
-        stopService(new Intent("com.iTracks.START_TRACK_SERVICE"));
+        stopService(new Intent("com.iTracks.START_TRACK_SERVICE").setPackage(this.getPackageName()));
     }
 
     private void findViews() {
@@ -80,18 +82,20 @@ public class ShowTrackActivity extends AppCompatActivity {
         mBaiduMap.animateMapStatus(u);
 
         // 开启定位图层
-/*
+
         mBaiduMap.setMyLocationEnabled(true);
         mLocClient = new LocationClient(this);
         locationListener = new MyLocationListener();
         mLocClient.registerLocationListener(locationListener);
+
         LocationClientOption option = new LocationClientOption();
         option.setOpenGps(true); // 打开gps
         option.setCoorType("bd09ll"); // 设置坐标类型
         option.setScanSpan(1000);
         mLocClient.setLocOption(option);
         mLocClient.start();
-*/
+
+
     }
 
     public void toggleNormal(View view) {
@@ -106,9 +110,8 @@ public class ShowTrackActivity extends AppCompatActivity {
         mBaiduMap.setTrafficEnabled(bShowTraffic = !bShowTraffic);
     }
 
-    private void centerOnGPSPosition(View view) {
+    public void centerOnGPSPosition(View view) {
         Log.d(TAG, "centerOnGPSPosition");
-        String provider = "gps";
 
         BDLocation location = mLocClient.getLastKnownLocation();
         LatLng ll = new LatLng(location.getLatitude(),
@@ -146,11 +149,20 @@ public class ShowTrackActivity extends AppCompatActivity {
                         Toast.LENGTH_SHORT).show();
                 // Set up the overlay controller
                 // mOverlayController = mMapView.createOverlayController();
-                LatLng ll = new LatLng(loc.getLatitude(),
-                        loc.getLongitude());
-                MapStatus.Builder builder = new MapStatus.Builder();
-                builder.target(ll).zoom(18.0f);
-                mBaiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
+                MyLocationData locData = new MyLocationData.Builder()
+                        .accuracy(loc.getRadius())
+                        // 此处设置开发者获取到的方向信息，顺时针0-360
+                        .direction(100).latitude(loc.getLatitude())
+                        .longitude(loc.getLongitude()).build();
+                mBaiduMap.setMyLocationData(locData);
+                if (isFirstLoc) {
+                    isFirstLoc = false;
+                    LatLng ll = new LatLng(loc.getLatitude(),
+                            loc.getLongitude());
+                    MapStatus.Builder builder = new MapStatus.Builder();
+                    builder.target(ll).zoom(18.0f);
+                    mBaiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
+                }
                 // //////////
                 //if(mlcDbHelper == null){
                 //	mlcDbHelper.open();
@@ -203,5 +215,29 @@ public class ShowTrackActivity extends AppCompatActivity {
                 break;
         }
         return true;
+    }
+
+    @Override
+    protected void onPause() {
+        mMapView.onPause();
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        mMapView.onResume();
+        super.onResume();
+    }
+
+    @Override
+    protected void onDestroy() {
+        // 退出时销毁定位
+        mLocClient.stop();
+        // 关闭定位图层
+        mBaiduMap.setMyLocationEnabled(false);
+        mMapView.onDestroy();
+        mMapView = null;
+        super.onDestroy();
+        stopTrackService();
     }
 }

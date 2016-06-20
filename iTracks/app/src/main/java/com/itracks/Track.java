@@ -44,12 +44,14 @@ public class Track extends Service {
         mLocClient = new LocationClient(this);
         locationListener = new MyLocationListener();
         mLocClient.registerLocationListener(locationListener);
+        mLocClient.start();
         return START_STICKY;
     }
 
     @Override
     public void onDestroy() {
         Log.d(TAG, "onDestroy.");
+        mLocClient.stop();
         super.onDestroy();
         stopDb();
     }

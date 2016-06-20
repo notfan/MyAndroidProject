@@ -44,6 +44,11 @@
                 <category android:name="android.intent.category.default" />
             </intent-filter>
         </service>
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote" >
+        </service>
 
         <activity android:name=".SettingActivity" />
         <activity android:name=".ShowTrackActivity" />
