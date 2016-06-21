@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
+import com.baidu.location.LocationClientOption;
 
 public class Track extends Service {
     private static final String TAG = "Track";
@@ -44,6 +45,11 @@ public class Track extends Service {
         mLocClient = new LocationClient(this);
         locationListener = new MyLocationListener();
         mLocClient.registerLocationListener(locationListener);
+        LocationClientOption option = new LocationClientOption();
+        option.setOpenGps(true); // 打开gps
+        option.setCoorType("bd09ll"); // 设置坐标类型
+        option.setScanSpan(1000);
+        mLocClient.setLocOption(option);
         mLocClient.start();
         return START_STICKY;
     }

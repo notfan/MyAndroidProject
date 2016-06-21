@@ -35,7 +35,6 @@ public class ShowTrackActivity extends AppCompatActivity {
     private static final int MENU_MAIN = MENU_DEL + 1;
 
     private TrackDbAdapter mDbHelper;
-    private LocateDbAdapter mlcDbHelper;
 
     private static final String TAG = "ShowTrack";
     private MapView mMapView;
@@ -45,6 +44,7 @@ public class ShowTrackActivity extends AppCompatActivity {
     LocationClient mLocClient;
     private BDLocationListener locationListener;
 
+    static LocateDbAdapter mlcDbHelper = null;
     private int track_id;
     private Long rowId;
 
@@ -54,12 +54,14 @@ public class ShowTrackActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_track);
+        startDb();
         findViews();
         revArgs();
         //paintLocates();
-        startTrackService();
+        //startTrackService();
     }
 
+/*
     private void startTrackService() {
         Intent i = new Intent("com.iTracks.START_TRACK_SERVICE");
         i.putExtra(LocateDbAdapter.TRACKID, track_id);
@@ -69,6 +71,7 @@ public class ShowTrackActivity extends AppCompatActivity {
     private void stopTrackService() {
         stopService(new Intent("com.iTracks.START_TRACK_SERVICE").setPackage(this.getPackageName()));
     }
+*/
 
     private void findViews() {
         Log.d(TAG, "find Views");
@@ -91,7 +94,7 @@ public class ShowTrackActivity extends AppCompatActivity {
         LocationClientOption option = new LocationClientOption();
         option.setOpenGps(true); // 打开gps
         option.setCoorType("bd09ll"); // 设置坐标类型
-        option.setScanSpan(1000);
+        option.setScanSpan(3000);
         mLocClient.setLocOption(option);
         mLocClient.start();
 
@@ -164,10 +167,10 @@ public class ShowTrackActivity extends AppCompatActivity {
                     mBaiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
                 }
                 // //////////
-                //if(mlcDbHelper == null){
-                //	mlcDbHelper.open();
-                //}
-                //mlcDbHelper.createLocate(track_id,  loc.getLongitude(),loc.getLatitude(), loc.getAltitude());
+                if(mlcDbHelper == null){
+                	mlcDbHelper.open();
+                }
+                mlcDbHelper.createLocate(track_id,  loc.getLongitude(),loc.getLatitude(), loc.getAltitude());
             }
         }
     }
@@ -196,7 +199,7 @@ public class ShowTrackActivity extends AppCompatActivity {
                 return true;
             case MENU_CON:
                 // TODO: 继续跟踪选择的记录
-                startTrackService();
+                //startTrackService();
                 return true;
             case MENU_DEL:
                 mDbHelper = new TrackDbAdapter(this);
@@ -231,6 +234,7 @@ public class ShowTrackActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
+        Log.d(TAG, "onDestroy.");
         // 退出时销毁定位
         mLocClient.stop();
         // 关闭定位图层
@@ -238,6 +242,21 @@ public class ShowTrackActivity extends AppCompatActivity {
         mMapView.onDestroy();
         mMapView = null;
         super.onDestroy();
-        stopTrackService();
+        stopDb();
+//        stopTrackService();
+    }
+
+    private void startDb() {
+        if(mlcDbHelper == null){
+            mlcDbHelper = new LocateDbAdapter(this);
+            mlcDbHelper.open();
+        }
+    }
+
+    private void stopDb() {
+        if(mlcDbHelper != null){
+            mlcDbHelper.close();
+            mlcDbHelper = null;
+        }
     }
 }
