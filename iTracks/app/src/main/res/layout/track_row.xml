@@ -6,20 +6,20 @@
 
 	<TextView android:id="@+id/name"
 		android:layout_width="wrap_content" 
-		android:layout_height="30px"
+		android:layout_height="25sp"
 		android:maxWidth="200dip" 
 		android:textSize="22sp"
 		android:layout_marginTop="10dip"
 		android:text="Name" />
 	<TextView android:id="@+id/created" 
 		android:layout_width="wrap_content"
-		android:layout_height="30px" 
+		android:layout_height="25sp"
 		android:layout_alignParentRight="true"
 		android:layout_marginLeft="10dip" 
 		android:layout_marginTop="10dip"
 		android:text="Time" />
 	<TextView android:id="@+id/desc" android:layout_width="wrap_content"
-		android:layout_height="25px" 
+		android:layout_height="19sp"
 	    android:layout_below="@+id/name"
 		android:textSize="16sp"
 	    android:text="Desc" />
