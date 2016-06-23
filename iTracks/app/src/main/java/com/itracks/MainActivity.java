@@ -20,10 +20,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     //定义菜单需要的常量
     private static final int MENU_NEW = Menu.FIRST + 1;
-    private static final int MENU_CON = MENU_NEW + 1;
-    private static final int MENU_SETTING = MENU_CON + 1;
+    private static final int MENU_SETTING = MENU_NEW + 1;
     private static final int MENU_HELPS = MENU_SETTING + 1;
-    private static final int MENU_EXIT = MENU_HELPS + 1;
+    private static final int MENU_REFRESH = MENU_HELPS + 1;
+    private static final int MENU_EXIT = MENU_REFRESH + 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,12 +71,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         menu.add(0, MENU_NEW, 0, R.string.menu_new).setIcon(
                 R.drawable.new_track).setAlphabeticShortcut('N');
-        menu.add(0, MENU_CON, 0, R.string.menu_con).setIcon(
-                R.drawable.con_track).setAlphabeticShortcut('C');
         menu.add(0, MENU_SETTING, 0, R.string.menu_setting).setIcon(
                 R.drawable.setting).setAlphabeticShortcut('S');
         menu.add(0, MENU_HELPS, 0, R.string.menu_helps).setIcon(
                 R.drawable.helps).setAlphabeticShortcut('H');
+        menu.add(0, MENU_REFRESH, 0, R.string.menu_ref).setIcon(
+                R.drawable.con_track).setAlphabeticShortcut('R');
         menu.add(0, MENU_EXIT, 0, R.string.menu_exit).setIcon(
                 R.drawable.exit).setAlphabeticShortcut('E');
         return true;
@@ -90,9 +90,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 intent.setClass(MainActivity.this, NewTrackActivity.class);
                 startActivity(intent);
                 return true;
-            case MENU_CON:
-                //TODO: 继续跟踪选择的记录
-                conTrackService();
+            case MENU_REFRESH:
+                mDbHelper.open();
+                render_tracks();
                 return true;
             case MENU_SETTING:
                 intent.setClass(MainActivity.this, SettingActivity.class);

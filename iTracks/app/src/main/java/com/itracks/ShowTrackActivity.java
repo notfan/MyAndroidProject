@@ -29,12 +29,11 @@ import com.baidu.mapapi.model.LatLng;
 import com.baidu.mapapi.model.inner.GeoPoint;
 
 public class ShowTrackActivity extends AppCompatActivity {
-    private static final int MENU_NEW = Menu.FIRST + 1;
-    private static final int MENU_CON = MENU_NEW + 1;
-    private static final int MENU_DEL = MENU_CON + 1;
-    private static final int MENU_MAIN = MENU_DEL + 1;
+    private static final int MENU_DEL = Menu.FIRST + 1;
+    private static final int MENU_BACK = MENU_DEL + 1;
 
     private TrackDbAdapter mDbHelper;
+    private LocateDbAdapter mLocateDbHelper;
 
     private static final String TAG = "ShowTrack";
     private MapView mMapView;
@@ -60,18 +59,6 @@ public class ShowTrackActivity extends AppCompatActivity {
         //paintLocates();
         //startTrackService();
     }
-
-/*
-    private void startTrackService() {
-        Intent i = new Intent("com.iTracks.START_TRACK_SERVICE");
-        i.putExtra(LocateDbAdapter.TRACKID, track_id);
-        startService(i.setPackage(this.getPackageName()));
-    }
-
-    private void stopTrackService() {
-        stopService(new Intent("com.iTracks.START_TRACK_SERVICE").setPackage(this.getPackageName()));
-    }
-*/
 
     private void findViews() {
         Log.d(TAG, "find Views");
@@ -178,14 +165,10 @@ public class ShowTrackActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
-        menu.add(0, MENU_CON, 0, R.string.menu_con).setIcon(
-                R.drawable.con_track).setAlphabeticShortcut('C');
         menu.add(0, MENU_DEL, 0, R.string.menu_del).setIcon(R.drawable.delete)
                 .setAlphabeticShortcut('D');
-        menu.add(0, MENU_NEW, 0, R.string.menu_new).setIcon(
-                R.drawable.new_track).setAlphabeticShortcut('N');
-        menu.add(0, MENU_MAIN, 0, R.string.menu_main).setIcon(R.drawable.icon)
-                .setAlphabeticShortcut('M');
+        menu.add(0, MENU_BACK, 0, R.string.menu_back).setIcon(R.drawable.back)
+                .setAlphabeticShortcut('B');
         return true;
     }
 
@@ -193,28 +176,25 @@ public class ShowTrackActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         Intent intent = new Intent();
         switch (item.getItemId()) {
-            case MENU_NEW:
-                intent.setClass(this, NewTrackActivity.class);
-                startActivity(intent);
-                return true;
-            case MENU_CON:
-                // TODO: 继续跟踪选择的记录
-                //startTrackService();
-                return true;
             case MENU_DEL:
                 mDbHelper = new TrackDbAdapter(this);
                 mDbHelper.open();
                 if (mDbHelper.deleteTrack(rowId)) {
                     mDbHelper.close();
+                    //删除该track的locate记录
+                    mLocateDbHelper = new LocateDbAdapter(this);
+                    mLocateDbHelper.open();
+                    mLocateDbHelper.deleteLocateByTrack(rowId);
+                    mLocateDbHelper.close();
                     intent.setClass(this, MainActivity.class);
                     startActivity(intent);
                 }else{
                     mDbHelper.close();
                 }
-                return true;
-            case MENU_MAIN:
-                intent.setClass(this, MainActivity.class);
-                startActivity(intent);
+                finish();
+                break;
+            case MENU_BACK:
+                finish();
                 break;
         }
         return true;

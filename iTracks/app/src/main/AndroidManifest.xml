@@ -37,13 +37,6 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".Track">
-            <intent-filter>
-                <action android:name="com.iTracks.START_TRACK_SERVICE" />
-
-                <category android:name="android.intent.category.default" />
-            </intent-filter>
-        </service>
         <service
             android:name="com.baidu.location.f"
             android:enabled="true"

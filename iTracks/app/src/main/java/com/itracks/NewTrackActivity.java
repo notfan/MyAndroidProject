@@ -52,7 +52,7 @@ public class NewTrackActivity extends AppCompatActivity {
                         getString(R.string.new_name_null),
                         Toast.LENGTH_SHORT).show();
             } else {
-                // TODO 调用存储接口保存到数据库并启动service
+                // TODO 调用存储接口保存到数据库
                 Long row_id = mDbHelper.createTrack(name, desc);
                 Log.d(TAG, "row_id="+row_id);
 

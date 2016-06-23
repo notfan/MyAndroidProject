@@ -70,6 +70,10 @@ public class LocateDbAdapter extends DbAdapter {
         return mDb.delete(TABLE_NAME, ID + "=" + rowId, null) > 0;
     }
 
+    public boolean deleteLocateByTrack(long trackId) {
+        return mDb.delete(TABLE_NAME, TRACKID + "=" + trackId, null) > 0;
+    }
+
 
     public Cursor getTrackAllLocates(int trackId) {
         return mDb.query(TABLE_NAME, new String[] { ID,TRACKID, LON,

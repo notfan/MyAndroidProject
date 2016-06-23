@@ -6,6 +6,7 @@
     <string name="menu_main">主界面</string>
     <string name="menu_new">新建跟踪</string>
     <string name="menu_con">继续跟踪</string>
+    <string name="menu_ref">刷新</string>
     <string name="menu_del">删除</string>
 
     <string name="menu_setting">个人设置</string>
