@@ -3,6 +3,7 @@ package com.itracks;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -24,9 +25,16 @@ import com.baidu.mapapi.map.MapStatus;
 import com.baidu.mapapi.map.MapStatusUpdate;
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
+import com.baidu.mapapi.map.MyLocationConfiguration;
 import com.baidu.mapapi.map.MyLocationData;
+import com.baidu.mapapi.map.OverlayOptions;
+import com.baidu.mapapi.map.Polyline;
+import com.baidu.mapapi.map.PolylineOptions;
 import com.baidu.mapapi.model.LatLng;
 import com.baidu.mapapi.model.inner.GeoPoint;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ShowTrackActivity extends AppCompatActivity {
     private static final int MENU_DEL = Menu.FIRST + 1;
@@ -56,8 +64,7 @@ public class ShowTrackActivity extends AppCompatActivity {
         startDb();
         findViews();
         revArgs();
-        //paintLocates();
-        //startTrackService();
+        paintLocates();
     }
 
     private void findViews() {
@@ -74,6 +81,8 @@ public class ShowTrackActivity extends AppCompatActivity {
         // 开启定位图层
 
         mBaiduMap.setMyLocationEnabled(true);
+        mBaiduMap.setMyLocationConfigeration(new MyLocationConfiguration(
+                        MyLocationConfiguration.LocationMode.FOLLOWING, true, null));
         mLocClient = new LocationClient(this);
         locationListener = new MyLocationListener();
         mLocClient.registerLocationListener(locationListener);
@@ -111,12 +120,27 @@ public class ShowTrackActivity extends AppCompatActivity {
         mBaiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
     }
 
+    private void paintLocates() {
+        mlcDbHelper = new LocateDbAdapter(this);
+        mlcDbHelper.open();
+        Cursor mLocatesCursor = mlcDbHelper.getTrackAllLocates(track_id);
+        LatLng point;
+        List<LatLng> points = new ArrayList<LatLng>();
+        while(mLocatesCursor.moveToNext()){
+            point = new LatLng(mLocatesCursor.getDouble(3), mLocatesCursor.getDouble(2));
+            points.add(point);
+        }
+        OverlayOptions ooPolyline = new PolylineOptions().width(2)
+                .color(0xAAFF0000).points(points);
+        mBaiduMap.addOverlay(ooPolyline);
+        mLocatesCursor.close();
+    }
+
     private void revArgs() {
         Log.d(TAG, "revArgs.");
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             String name = extras.getString(TrackDbAdapter.NAME);
-            //String desc = extras.getString(TrackDbAdapter.DESC);
             rowId = extras.getLong(TrackDbAdapter.KEY_ROWID);
             track_id = rowId.intValue();
             Log.d(TAG, "rowId=" + rowId);
@@ -137,8 +161,6 @@ public class ShowTrackActivity extends AppCompatActivity {
                         "Location changed : Lat: " + loc.getLatitude()
                                 + " Lng: " + loc.getLongitude(),
                         Toast.LENGTH_SHORT).show();
-                // Set up the overlay controller
-                // mOverlayController = mMapView.createOverlayController();
                 MyLocationData locData = new MyLocationData.Builder()
                         .accuracy(loc.getRadius())
                         // 此处设置开发者获取到的方向信息，顺时针0-360
@@ -223,7 +245,6 @@ public class ShowTrackActivity extends AppCompatActivity {
         mMapView = null;
         super.onDestroy();
         stopDb();
-//        stopTrackService();
     }
 
     private void startDb() {
