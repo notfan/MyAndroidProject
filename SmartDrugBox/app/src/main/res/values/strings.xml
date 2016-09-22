@@ -6,4 +6,10 @@
 
     <string name="action_settings">Settings</string>
     <string name="nick_name">Nick Name</string>
+
+    <string name="button_add_appointment">添加看病预约</string>
+    <string name="button_add_note">添加日记</string>
+    <string name="button_add_mf">添加联系人</string>
+
+    <string name="menu_appointment">看病预约</string>
 </resources>

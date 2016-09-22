@@ -3,4 +3,7 @@
     <color name="colorPrimary">#da4437</color>
     <color name="colorPrimaryDark">#ba3a2f</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="colorMenuButtonBlue">#4185F9</color>
+    <color name="colorMenuButtonOcher">#C89C09</color>
+    <color name="colorMenuButtonGreen">#00CC66</color>
 </resources>

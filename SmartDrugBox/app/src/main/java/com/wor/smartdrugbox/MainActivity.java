@@ -13,6 +13,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.novaapps.floatingactionmenu.FloatingActionMenu;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -25,6 +27,7 @@ public class MainActivity extends AppCompatActivity
         toolbar.setTitle(R.string.nick_name);
         setSupportActionBar(toolbar);
 
+/*
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,6 +36,9 @@ public class MainActivity extends AppCompatActivity
                         .setAction("Action", null).show();
             }
         });
+*/
+        FloatingActionMenu menu = (FloatingActionMenu) findViewById(R.id.fab_menu_line);
+        menu.setmItemGap(48);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
