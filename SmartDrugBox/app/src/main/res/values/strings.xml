@@ -11,5 +11,13 @@
     <string name="button_add_note">添加日记</string>
     <string name="button_add_mf">添加联系人</string>
 
+    <string name="menu_calendar">服药日程</string>
+    <string name="menu_report">报告</string>
     <string name="menu_appointment">看病预约</string>
+    <string name="menu_note">日记</string>
+    <string name="menu_doctor">医生</string>
+    <string name="menu_contact">联系人</string>
+    <string name="menu_tip">提示</string>
+    <string name="menu_settings">设置</string>
+    <string name="menu_help">帮助与反馈</string>
 </resources>
