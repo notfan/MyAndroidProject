@@ -13,11 +13,20 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
+import android.widget.SimpleAdapter;
 
 import com.novaapps.floatingactionmenu.FloatingActionMenu;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    private CellAlarmDbAdapter mDbHelper;
+    ListView listView;
+    List<Map<String, Object>> list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,9 +43,13 @@ public class MainActivity extends AppCompatActivity
         FloatingActionMenu menu = (FloatingActionMenu) findViewById(R.id.fab_menu_line);
         menu.setmItemGap(48);
 
-        //set listview
+        //init data
+        mDbHelper = new CellAlarmDbAdapter(this);
+        mDbHelper.open();
 
-        ListView listView = (ListView)findViewById(R.id.listView) ;
+        //set listview
+        listView = (ListView)findViewById(R.id.listView);
+        refreshListItems();
 
         //set drawer
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -57,6 +70,12 @@ public class MainActivity extends AppCompatActivity
         } else {
             super.onBackPressed();
         }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mDbHelper.close();
     }
 
     @Override
@@ -110,5 +129,27 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void refreshListItems() {
+        list = buildListForSimpleAdapter();
+        SimpleAdapter notes = new SimpleAdapter(this, list, R.layout.cell_row,
+                new String[] { "name", "desc", "img" }, new int[] { R.id.name,
+                R.id.desc, R.id.img });
+        listView.setAdapter(notes);
+        listView.setOnItemClickListener(this);
+        listView.setSelection(0);
+    }
+
+    private List<Map<String, Object>> buildListForSimpleAdapter() {
+        List<Map<String, Object>> list = new ArrayList<Map<String, Object>>(3);
+        // Build a map for the attributes
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("name", "系统信息");
+        map.put("desc", "查看设备系统版本,运营商及其系统信息.");
+        map.put("img", R.drawable.cell);
+        list.add(map);
+
+        return list;
     }
 }

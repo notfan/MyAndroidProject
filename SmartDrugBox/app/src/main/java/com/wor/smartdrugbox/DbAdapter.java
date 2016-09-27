@@ -18,11 +18,21 @@ public class DbAdapter {
 
         @Override
         public void onCreate(SQLiteDatabase db) {
+            String tracks_sql = "CREATE TABLE cell_alarm ("
+                    + "_id INTEGER primary key autoincrement, "
+                    + "position integer, "
+                    + "start_date date ,"
+                    + "alarm_time time ,"
+                    + "user_id integer"
+                    + ");";
+            Log.i(TAG, tracks_sql);
+            db.execSQL(tracks_sql);
         }
 
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+            db.execSQL("DROP TABLE IF EXISTS cell_alarm;");
+            onCreate(db);
         }
 
     }
