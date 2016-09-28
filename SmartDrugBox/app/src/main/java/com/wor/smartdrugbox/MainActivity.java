@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
@@ -23,7 +24,7 @@ import java.util.List;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener,AdapterView.OnItemClickListener {
     private CellAlarmDbAdapter mDbHelper;
     ListView listView;
     List<Map<String, Object>> list;
@@ -133,10 +134,10 @@ public class MainActivity extends AppCompatActivity
 
     private void refreshListItems() {
         list = buildListForSimpleAdapter();
-        SimpleAdapter notes = new SimpleAdapter(this, list, R.layout.cell_row,
-                new String[] { "name", "desc", "img" }, new int[] { R.id.name,
-                R.id.desc, R.id.img });
-        listView.setAdapter(notes);
+        SimpleAdapter bar = new SimpleAdapter(this, list, R.layout.cell_row,
+                new String[] { "drug_name1", "desc1", "drug_name2", "desc2", "alarm_time", "cell_tip", "cell_img" }, new int[] { R.id.drug_name1,
+                R.id.desc1, R.id.drug_name2, R.id.desc2, R.id.alarm_time, R.id.cell_tip, R.id.cell_img });
+        listView.setAdapter(bar);
         listView.setOnItemClickListener(this);
         listView.setSelection(0);
     }
@@ -145,11 +146,64 @@ public class MainActivity extends AppCompatActivity
         List<Map<String, Object>> list = new ArrayList<Map<String, Object>>(3);
         // Build a map for the attributes
         Map<String, Object> map = new HashMap<String, Object>();
-        map.put("name", "系统信息");
-        map.put("desc", "查看设备系统版本,运营商及其系统信息.");
-        map.put("img", R.drawable.cell);
+        map.put("drug_name1", "药片1 1");
+        map.put("desc1", "早饭前服用");
+        map.put("alarm_time", "8:00 AM");
+        map.put("cell_tip", R.drawable.ic_taked);
+        map.put("cell_img", R.drawable.cell);
+        list.add(map);
+
+        map = new HashMap<String, Object>();
+        map.put("drug_name1", "药片2 1");
+        map.put("desc1", "嚼服");
+        map.put("alarm_time", "10:00 AM");
+        map.put("cell_tip", R.drawable.ic_not_taked);
+        map.put("cell_img", R.drawable.cell);
+        list.add(map);
+
+        map = new HashMap<String, Object>();
+        map.put("drug_name1", "药片2 1");
+        map.put("desc1", "嚼服");
+        map.put("alarm_time", "10:00 AM");
+        map.put("cell_tip", R.drawable.ic_not_taked);
+        map.put("cell_img", R.drawable.cell);
+        list.add(map);
+
+        map = new HashMap<String, Object>();
+        map.put("drug_name1", "药片2 1");
+        map.put("desc1", "嚼服");
+        map.put("alarm_time", "10:00 AM");
+        map.put("cell_tip", R.drawable.ic_not_taked);
+        map.put("cell_img", R.drawable.cell);
+        list.add(map);
+
+        map = new HashMap<String, Object>();
+        map.put("drug_name1", "药片2 1");
+        map.put("desc1", "嚼服");
+        map.put("alarm_time", "10:00 AM");
+        map.put("cell_tip", R.drawable.ic_not_taked);
+        map.put("cell_img", R.drawable.cell);
+        list.add(map);
+
+        map = new HashMap<String, Object>();
+        map.put("drug_name1", "药片2 1");
+        map.put("desc1", "嚼服");
+        map.put("alarm_time", "10:00 AM");
+        map.put("cell_tip", R.drawable.ic_not_taked);
+        map.put("cell_img", R.drawable.cell);
+        list.add(map);
+
+        map = new HashMap<String, Object>();
+        map.put("drug_name1", "药片2 1");
+        map.put("desc1", "嚼服");
+        map.put("alarm_time", "10:00 AM");
+        map.put("cell_tip", R.drawable.ic_not_taked);
+        map.put("cell_img", R.drawable.cell);
         list.add(map);
 
         return list;
+    }
+    public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+
     }
 }

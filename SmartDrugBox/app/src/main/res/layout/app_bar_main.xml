@@ -21,22 +21,30 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="20dp"
+            android:layout_height="32dp"
             android:background="?attr/colorAccent">
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="@string/text_date"
+                android:textSize="18sp"
                 android:layout_weight="1"
-                android:id="@+id/text_view_date" />
+                android:id="@+id/text_view_date"
+                android:gravity="center_vertical"
+                android:paddingLeft="16dp"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="@string/text_switch"
+                android:textSize="18sp"
                 android:id="@+id/text_view_switch"
-                android:clickable="true" />
+                android:gravity="center_vertical"
+                android:clickable="true"
+                android:paddingRight="16dp"
+                android:textStyle="bold" />
         </LinearLayout>
 
     </android.support.design.widget.AppBarLayout>
@@ -66,6 +74,15 @@
 
             <!-- Other button as menu items-->
             <android.support.design.widget.FloatingActionButton
+                android:id="@+id/fab_drug"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/add_med_white"
+                android:contentDescription="@string/button_add_drug"
+                app:fabSize="mini"
+                app:backgroundTint="@color/colorMenuButtonPurple" />
+
+            <android.support.design.widget.FloatingActionButton
                 android:id="@+id/fab_appointment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -73,7 +90,6 @@
                 android:contentDescription="@string/button_add_appointment"
                 app:fabSize="mini"
                 app:backgroundTint="@color/colorMenuButtonOcher" />
-
 
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/fab_note"
