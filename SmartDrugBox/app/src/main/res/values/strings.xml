@@ -24,4 +24,13 @@
 
     <string name="text_date">9月22日   周四</string>
     <string name="text_switch">周视图</string>
+
+    <string name="title_activity_report">报告</string>
+    <string name="title_activity_appointment">看病预约</string>
+    <string name="title_activity_note">日记</string>
+    <string name="title_activity_doctor">医生</string>
+    <string name="title_activity_contact">联系人</string>
+    <string name="title_activity_tip">提示</string>
+    <string name="title_activity_setting">设置</string>
+    <string name="title_activity_help">帮助与反馈</string>
 </resources>

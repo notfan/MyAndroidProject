@@ -49,14 +49,14 @@
         android:layout_gravity="center">
 
         <TextView android:id="@+id/alarm_time"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center" />
 
         <ImageView android:id="@+id/cell_tip"
-            android:layout_width="48sp"
-            android:layout_height="48sp"
+            android:layout_width="32sp"
+            android:layout_height="32sp"
             android:layout_gravity="center" />
     </LinearLayout>
 

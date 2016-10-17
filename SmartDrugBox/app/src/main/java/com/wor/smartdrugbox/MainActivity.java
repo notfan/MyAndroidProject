@@ -1,5 +1,6 @@
 package com.wor.smartdrugbox;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -92,9 +93,12 @@ public class MainActivity extends AppCompatActivity
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
+        Intent intent = new Intent();
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            intent.setClass(this, TipActivity.class);
+            startActivity(intent);
             return true;
         }
 
@@ -106,29 +110,31 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+        Intent intent = new Intent();
 
         if (id == R.id.nav_appointment) {
-            // Handle the camera action
+            intent.setClass(this, AppointmentActivity.class);
         } else if (id == R.id.nav_calendar) {
-
+            //intent.setClass(this, MainActivity.class);
         } else if (id == R.id.nav_contact) {
-
+            intent.setClass(this, ContactActivity.class);
         } else if (id == R.id.nav_doctor) {
-
+            intent.setClass(this, DoctorActivity.class);
         } else if (id == R.id.nav_help) {
-
+            intent.setClass(this, HelpActivity.class);
         } else if (id == R.id.nav_note) {
-
+            intent.setClass(this, NoteActivity.class);
         } else if (id == R.id.nav_report) {
-
+            intent.setClass(this, ReportActivity.class);
         } else if (id == R.id.nav_settings) {
-
+            intent.setClass(this, SettingActivity.class);
         } else if (id == R.id.nav_tip) {
-
+            intent.setClass(this, TipActivity.class);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
+        startActivity(intent);
         return true;
     }
 
@@ -162,42 +168,44 @@ public class MainActivity extends AppCompatActivity
         list.add(map);
 
         map = new HashMap<String, Object>();
-        map.put("drug_name1", "药片2 1");
-        map.put("desc1", "嚼服");
-        map.put("alarm_time", "10:00 AM");
-        map.put("cell_tip", R.drawable.ic_not_taked);
+        map.put("drug_name1", "胶囊1 2");
+        map.put("desc1", "午饭前服用");
+        map.put("alarm_time", "12:00 AM");
+        map.put("cell_tip", R.drawable.ic_alarm);
         map.put("cell_img", R.drawable.cell);
         list.add(map);
 
         map = new HashMap<String, Object>();
-        map.put("drug_name1", "药片2 1");
-        map.put("desc1", "嚼服");
-        map.put("alarm_time", "10:00 AM");
-        map.put("cell_tip", R.drawable.ic_not_taked);
+        map.put("drug_name1", "药丸1 1");
+        map.put("alarm_time", "2:00 PM");
+        map.put("cell_tip", R.drawable.ic_alarm);
         map.put("cell_img", R.drawable.cell);
         list.add(map);
 
         map = new HashMap<String, Object>();
-        map.put("drug_name1", "药片2 1");
-        map.put("desc1", "嚼服");
-        map.put("alarm_time", "10:00 AM");
-        map.put("cell_tip", R.drawable.ic_not_taked);
+        map.put("drug_name1", "药丸2 1");
+        map.put("alarm_time", "4:00 PM");
+        map.put("cell_tip", R.drawable.ic_alarm);
         map.put("cell_img", R.drawable.cell);
         list.add(map);
 
         map = new HashMap<String, Object>();
-        map.put("drug_name1", "药片2 1");
-        map.put("desc1", "嚼服");
-        map.put("alarm_time", "10:00 AM");
-        map.put("cell_tip", R.drawable.ic_not_taked);
+        map.put("drug_name1", "药片3 1");
+        map.put("desc1", "晚饭后服用");
+        map.put("alarm_time", "6:00 PM");
+        map.put("cell_tip", R.drawable.ic_alarm);
         map.put("cell_img", R.drawable.cell);
         list.add(map);
 
         map = new HashMap<String, Object>();
-        map.put("drug_name1", "药片2 1");
-        map.put("desc1", "嚼服");
-        map.put("alarm_time", "10:00 AM");
-        map.put("cell_tip", R.drawable.ic_not_taked);
+        map.put("drug_name1", "药片4 1");
+        map.put("alarm_time", "8:00 PM");
+        map.put("cell_tip", R.drawable.ic_alarm);
+        map.put("cell_img", R.drawable.cell);
+        list.add(map);
+
+        map = new HashMap<String, Object>();
+        map.put("drug_name1", "未设置");
         map.put("cell_img", R.drawable.cell);
         list.add(map);
 
