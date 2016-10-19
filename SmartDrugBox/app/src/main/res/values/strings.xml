@@ -23,6 +23,10 @@
     <string name="menu_help">帮助与反馈</string>
 
     <string name="text_date">9月22日   周四</string>
+    <string name="text_week">10月16日 - 10月22日</string>
+    <string name="text_cell_date">2016年10月18日   周二</string>
+    <string name="text_cell_time">8:00 AM</string>
+
     <string name="text_switch">周视图</string>
 
     <string name="title_activity_report">报告</string>
@@ -33,4 +37,9 @@
     <string name="title_activity_tip">提示</string>
     <string name="title_activity_setting">设置</string>
     <string name="title_activity_help">帮助与反馈</string>
+    <string name="title_activity_cell_detail">药格详情</string>
+
+    <string name="action_delete">删除</string>
+    <string name="action_edit">编辑</string>
+
 </resources>

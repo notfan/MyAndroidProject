@@ -14,14 +14,16 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class SettingActivity extends AppCompatActivity
+public class WeekViewActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_setting);
+        setContentView(R.layout.activity_week_view);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setLogo(R.mipmap.ic_avatar);
+        toolbar.setTitle(R.string.nick_name);
         setSupportActionBar(toolbar);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -47,7 +49,7 @@ public class SettingActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.setting, menu);
+        getMenuInflater().inflate(R.menu.week_view, menu);
         return true;
     }
 
@@ -77,8 +79,7 @@ public class SettingActivity extends AppCompatActivity
             intent.setClass(this, AppointmentActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_calendar) {
-            intent.setClass(this, MainActivity.class);
-            startActivity(intent);
+            //intent.setClass(this, MainActivity.class);
         } else if (id == R.id.nav_contact) {
             intent.setClass(this, ContactActivity.class);
             startActivity(intent);
@@ -95,7 +96,8 @@ public class SettingActivity extends AppCompatActivity
             intent.setClass(this, ReportActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_settings) {
-            //intent.setClass(this, SettingActivity.class);
+            intent.setClass(this, SettingActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_tip) {
             intent.setClass(this, TipActivity.class);
             startActivity(intent);

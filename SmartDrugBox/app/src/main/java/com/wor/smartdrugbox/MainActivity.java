@@ -114,28 +114,40 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_appointment) {
             intent.setClass(this, AppointmentActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_calendar) {
             //intent.setClass(this, MainActivity.class);
         } else if (id == R.id.nav_contact) {
             intent.setClass(this, ContactActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_doctor) {
             intent.setClass(this, DoctorActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_help) {
             intent.setClass(this, HelpActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_note) {
             intent.setClass(this, NoteActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_report) {
             intent.setClass(this, ReportActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_settings) {
             intent.setClass(this, SettingActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_tip) {
             intent.setClass(this, TipActivity.class);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
-        startActivity(intent);
         return true;
+    }
+
+    public void switchView(View view) {
+        Intent intent = new Intent(this,WeekViewActivity.class);
+        startActivity(intent);
     }
 
     private void refreshListItems() {
@@ -212,6 +224,8 @@ public class MainActivity extends AppCompatActivity
         return list;
     }
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-
+        Intent intent = new Intent();
+        intent.setClass(this, CellDetailActivity.class);
+        startActivity(intent);
     }
 }
