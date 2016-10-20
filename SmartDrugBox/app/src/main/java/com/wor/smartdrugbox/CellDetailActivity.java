@@ -33,8 +33,9 @@ public class CellDetailActivity extends AppCompatActivity implements AdapterView
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent intent = new Intent();
+                intent.setClass(getApplicationContext(), DrugSettingActivity.class);
+                startActivity(intent);
             }
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -93,8 +94,8 @@ public class CellDetailActivity extends AppCompatActivity implements AdapterView
     }
 
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-        //Intent intent = new Intent();
-        //intent.setClass(this, CellDetailActivity.class);
-        //startActivity(intent);
+        Intent intent = new Intent();
+        intent.setClass(this, DrugSettingActivity.class);
+        startActivity(intent);
     }
 }

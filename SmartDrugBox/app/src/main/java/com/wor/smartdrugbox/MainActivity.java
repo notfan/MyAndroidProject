@@ -25,7 +25,7 @@ import java.util.List;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener,AdapterView.OnItemClickListener {
+        implements NavigationView.OnNavigationItemSelectedListener,AdapterView.OnItemClickListener,FloatingActionMenu.OnMenuItemClickListener {
     private CellAlarmDbAdapter mDbHelper;
     ListView listView;
     List<Map<String, Object>> list;
@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity
         //set floating menu
         FloatingActionMenu menu = (FloatingActionMenu) findViewById(R.id.fab_menu_line);
         menu.setmItemGap(48);
+        menu.setOnMenuItemClickListener(this);
 
         //init data
         mDbHelper = new CellAlarmDbAdapter(this);
@@ -227,5 +228,21 @@ public class MainActivity extends AppCompatActivity
         Intent intent = new Intent();
         intent.setClass(this, CellDetailActivity.class);
         startActivity(intent);
+    }
+    public void onMenuItemClick(FloatingActionMenu fam, int index, FloatingActionButton item) {
+        int id = item.getId();
+        Intent intent = new Intent();
+
+        if (id == R.id.fab_drug) {
+            intent.setClass(this, DrugSettingActivity.class);
+            startActivity(intent);
+        } else if (id == R.id.fab_appointment) {
+
+        } else if (id == R.id.fab_note) {
+
+        } else if (id == R.id.fab_contact) {
+
+        }
+
     }
 }

@@ -38,8 +38,11 @@
     <string name="title_activity_setting">设置</string>
     <string name="title_activity_help">帮助与反馈</string>
     <string name="title_activity_cell_detail">药格详情</string>
+    <string name="title_activity_drug_setting">药物设置</string>
+    <string name="title_activity_cell_setting">药格设置</string>
 
     <string name="action_delete">删除</string>
     <string name="action_edit">编辑</string>
+    <string name="action_finish">完成</string>
 
 </resources>

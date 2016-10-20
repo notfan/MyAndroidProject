@@ -64,6 +64,24 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.wor.smartdrugbox.MainActivity" />
         </activity>
+        <activity
+            android:name=".DrugSettingActivity"
+            android:label="@string/title_activity_drug_setting"
+            android:parentActivityName=".CellDetailActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.wor.smartdrugbox.CellDetailActivity" />
+        </activity>
+        <activity
+            android:name=".CellSettingActivity"
+            android:label="@string/title_activity_cell_setting"
+            android:parentActivityName=".CellDetailActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.wor.smartdrugbox.CellDetailActivity" />
+        </activity>
     </application>
 
 </manifest>
