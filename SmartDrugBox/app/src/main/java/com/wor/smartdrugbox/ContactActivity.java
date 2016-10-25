@@ -145,7 +145,7 @@ public class ContactActivity extends AppCompatActivity
         // Build a map for the attributes
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("contact_name", "Jack");
-        map.put("contact_img", R.drawable.ic_label_blue);
+        map.put("contact_img", R.drawable.contact_img);
         list.add(map);
 
         return list;

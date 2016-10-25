@@ -153,7 +153,7 @@ public class DoctorActivity extends AppCompatActivity
 
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
         Intent intent = new Intent();
-        intent.setClass(this, NoteDetailActivity.class);
+        intent.setClass(this, DoctorDetailActivity.class);
         startActivity(intent);
     }
 }

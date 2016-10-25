@@ -3,8 +3,8 @@
     <color name="colorPrimary">#da4437</color>
     <color name="colorPrimaryDark">#ba3a2f</color>
     <color name="colorAccent">#ffa7a3</color>
-    <color name="colorMenuButtonBlue">#4185F9</color>
-    <color name="colorMenuButtonOcher">#C89C09</color>
-    <color name="colorMenuButtonGreen">#00CC66</color>
+    <color name="colorMenuButtonBlue">#4185f9</color>
+    <color name="colorMenuButtonOcher">#c89c09</color>
+    <color name="colorMenuButtonGreen">#00cc66</color>
     <color name="colorMenuButtonPurple">#a300cc</color>
 </resources>
