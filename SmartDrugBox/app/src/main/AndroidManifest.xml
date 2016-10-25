@@ -82,6 +82,78 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.wor.smartdrugbox.CellDetailActivity" />
         </activity>
+        <activity
+            android:name=".AppointmentDetailActivity"
+            android:label="@string/title_activity_appointment_detail"
+            android:parentActivityName=".AppointmentActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.wor.smartdrugbox.AppointmentActivity" />
+        </activity>
+        <activity
+            android:name=".AppointmentSettingActivity"
+            android:label="@string/title_activity_appointment_setting"
+            android:parentActivityName=".AppointmentActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.wor.smartdrugbox.AppointmentActivity" />
+        </activity>
+        <activity
+            android:name=".NoteDetailActivity"
+            android:label="@string/title_activity_note_detail"
+            android:parentActivityName=".NoteActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.wor.smartdrugbox.NoteActivity" />
+        </activity>
+        <activity
+            android:name=".NoteSettingActivity"
+            android:label="@string/title_activity_note_setting"
+            android:parentActivityName=".NoteActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.wor.smartdrugbox.NoteActivity" />
+        </activity>
+        <activity
+            android:name=".DoctorSettingActivity"
+            android:label="@string/title_activity_doctor_setting"
+            android:parentActivityName=".DoctorActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.wor.smartdrugbox.DoctorActivity" />
+        </activity>
+        <activity
+            android:name=".ContactDetailActivity"
+            android:label="@string/title_activity_contact_detail"
+            android:parentActivityName=".ContactActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.wor.smartdrugbox.ContactActivity" />
+        </activity>
+        <activity
+            android:name=".ContactSettingActivity"
+            android:label="@string/title_activity_contact_setting"
+            android:parentActivityName=".ContactActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.wor.smartdrugbox.ContactActivity" />
+        </activity>
+        <activity
+            android:name=".DoctorDetailActivity"
+            android:label="@string/title_activity_doctor_detail"
+            android:parentActivityName=".DoctorActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.wor.smartdrugbox.DoctorActivity" />
+        </activity>
     </application>
 
 </manifest>

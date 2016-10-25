@@ -13,9 +13,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class NoteActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener,AdapterView.OnItemClickListener {
+    ListView listView;
+    List<Map<String, Object>> list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,10 +38,15 @@ public class NoteActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent intent = new Intent();
+                intent.setClass(getApplicationContext(), NoteSettingActivity.class);
+                startActivity(intent);
             }
         });
+
+        //set listview
+        listView = (ListView)findViewById(R.id.listView);
+        refreshListItems();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -113,5 +128,33 @@ public class NoteActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void refreshListItems() {
+        list = buildListForSimpleAdapter();
+        SimpleAdapter bar = new SimpleAdapter(this, list, R.layout.note_row,
+                new String[] { "note_title", "note_time", "note_label" }, new int[] { R.id.note_title,
+                R.id.note_time, R.id.note_label });
+        listView.setAdapter(bar);
+        listView.setOnItemClickListener(this);
+        listView.setSelection(0);
+    }
+
+    private List<Map<String, Object>> buildListForSimpleAdapter() {
+        List<Map<String, Object>> list = new ArrayList<Map<String, Object>>(3);
+        // Build a map for the attributes
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("note_title", "今天有点恶心");
+        map.put("note_time", "周三，3月3日，3:00 PM");
+        map.put("note_label", R.drawable.ic_label_blue);
+        list.add(map);
+
+        return list;
+    }
+
+    public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+        Intent intent = new Intent();
+        intent.setClass(this, NoteDetailActivity.class);
+        startActivity(intent);
     }
 }

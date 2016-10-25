@@ -38,8 +38,9 @@ public class AppointmentActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent intent = new Intent();
+                intent.setClass(getApplicationContext(), AppointmentSettingActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -143,9 +144,9 @@ public class AppointmentActivity extends AppCompatActivity
         List<Map<String, Object>> list = new ArrayList<Map<String, Object>>(3);
         // Build a map for the attributes
         Map<String, Object> map = new HashMap<String, Object>();
-        map.put("appointment_title", "药片1 1");
-        map.put("appointment_time", "早饭前服用");
-        map.put("doctor_img", R.drawable.tablet_white);
+        map.put("appointment_title", "Matthew - 看牙");
+        map.put("appointment_time", "周三，3月2日，9:00 AM");
+        map.put("doctor_img", R.drawable.doctor_img);
         list.add(map);
 
         return list;
@@ -153,7 +154,7 @@ public class AppointmentActivity extends AppCompatActivity
 
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
         Intent intent = new Intent();
-        intent.setClass(this, DrugSettingActivity.class);
+        intent.setClass(this, AppointmentDetailActivity.class);
         startActivity(intent);
     }
 }

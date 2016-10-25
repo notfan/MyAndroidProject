@@ -13,9 +13,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class DoctorActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener,AdapterView.OnItemClickListener {
+    ListView listView;
+    List<Map<String, Object>> list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,10 +38,15 @@ public class DoctorActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent intent = new Intent();
+                intent.setClass(getApplicationContext(), DoctorSettingActivity.class);
+                startActivity(intent);
             }
         });
+
+        //set listview
+        listView = (ListView)findViewById(R.id.listView);
+        refreshListItems();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -113,5 +128,32 @@ public class DoctorActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void refreshListItems() {
+        list = buildListForSimpleAdapter();
+        SimpleAdapter bar = new SimpleAdapter(this, list, R.layout.doctor_row,
+                new String[] { "doctor_name", "doctor_img" }, new int[] { R.id.doctor_name,
+                R.id.doctor_img });
+        listView.setAdapter(bar);
+        listView.setOnItemClickListener(this);
+        listView.setSelection(0);
+    }
+
+    private List<Map<String, Object>> buildListForSimpleAdapter() {
+        List<Map<String, Object>> list = new ArrayList<Map<String, Object>>(3);
+        // Build a map for the attributes
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("doctor_name", "Matthew");
+        map.put("doctor_img", R.drawable.doctor_img);
+        list.add(map);
+
+        return list;
+    }
+
+    public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+        Intent intent = new Intent();
+        intent.setClass(this, NoteDetailActivity.class);
+        startActivity(intent);
     }
 }

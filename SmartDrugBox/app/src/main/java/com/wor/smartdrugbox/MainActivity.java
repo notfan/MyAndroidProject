@@ -237,9 +237,11 @@ public class MainActivity extends AppCompatActivity
             intent.setClass(this, DrugSettingActivity.class);
             startActivity(intent);
         } else if (id == R.id.fab_appointment) {
-
+            intent.setClass(this, AppointmentSettingActivity.class);
+            startActivity(intent);
         } else if (id == R.id.fab_note) {
-
+            intent.setClass(this, NoteSettingActivity.class);
+            startActivity(intent);
         } else if (id == R.id.fab_contact) {
 
         }
