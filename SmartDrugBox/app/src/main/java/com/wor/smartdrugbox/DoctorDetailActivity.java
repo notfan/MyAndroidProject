@@ -118,7 +118,7 @@ public class DoctorDetailActivity extends AppCompatActivity {
                 case 0:
                     return DoctorDetailFragment.newInstance("","");
                 case 1:
-                    return DoctorAppointmentFragment.newInstance("","");
+                    return DoctorDrugFragment.newInstance("","");
                 case 2:
                     return DoctorAppointmentFragment.newInstance("","");
             }
