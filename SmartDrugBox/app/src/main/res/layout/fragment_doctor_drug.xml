@@ -1,12 +1,12 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.wor.smartdrugbox.DoctorDetailActivity$PlaceholderFragment">
+    tools:context="com.wor.smartdrugbox.DoctorDrugFragment">
 
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/listView" />
 
-</RelativeLayout>
+</FrameLayout>

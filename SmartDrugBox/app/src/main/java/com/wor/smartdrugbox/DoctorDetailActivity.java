@@ -101,93 +101,6 @@ public class DoctorDetailActivity extends AppCompatActivity {
     }
 
     /**
-     * A placeholder fragment containing a simple view.
-     */
-    public static class PlaceholderFragment extends Fragment implements AdapterView.OnItemClickListener {
-        ListView listView;
-        List<Map<String, Object>> list;
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
-        private static final String ARG_SECTION_NUMBER = "section_number";
-
-        public PlaceholderFragment() {
-        }
-
-        /**
-         * Returns a new instance of this fragment for the given section
-         * number.
-         */
-        public static PlaceholderFragment newInstance(int sectionNumber) {
-            PlaceholderFragment fragment = new PlaceholderFragment();
-            Bundle args = new Bundle();
-            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
-            fragment.setArguments(args);
-            return fragment;
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView;
-            TextView textView;
-            switch (getArguments().getInt(ARG_SECTION_NUMBER)){
-                case 1:
-                    rootView = inflater.inflate(R.layout.fragment_doctor_detail, container, false);
-                    textView = (TextView) rootView.findViewById(R.id.section_label);
-                    textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
-                    break;
-                case 2:
-                    rootView = inflater.inflate(R.layout.fragment_doctor_drug, container, false);
-                    //set listview
-                    listView = (ListView)rootView.findViewById(R.id.listView);
-                    refreshListItems();
-                    break;
-                case 3:
-                    rootView = inflater.inflate(R.layout.fragment_doctor_appointment, container, false);
-                    textView = (TextView) rootView.findViewById(R.id.section_label);
-                    textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
-                    break;
-                default:
-                    rootView = inflater.inflate(R.layout.fragment_doctor_detail, container, false);
-                    textView = (TextView) rootView.findViewById(R.id.section_label);
-                    textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
-            }
-
-            return rootView;
-        }
-
-        private void refreshListItems() {
-            list = buildListForSimpleAdapter();
-            SimpleAdapter bar = new SimpleAdapter(getApplicationContext(), list, R.layout.drug_row,
-                    new String[] { "drug_name", "desc", "drug_img" }, new int[] { R.id.drug_name,
-                    R.id.desc, R.id.drug_img });
-            listView.setAdapter(bar);
-            listView.setOnItemClickListener(this);
-            listView.setSelection(0);
-        }
-
-        private List<Map<String, Object>> buildListForSimpleAdapter() {
-            List<Map<String, Object>> list = new ArrayList<Map<String, Object>>(3);
-            // Build a map for the attributes
-            Map<String, Object> map = new HashMap<String, Object>();
-            map.put("drug_name", "药片1 1");
-            map.put("desc", "早饭前服用");
-            map.put("drug_img", R.drawable.tablet_white);
-            list.add(map);
-
-            return list;
-        }
-
-        public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-            Intent intent = new Intent();
-            intent.setClass(getApplicationContext(), DrugSettingActivity.class);
-            startActivity(intent);
-        }
-    }
-
-    /**
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
      * one of the sections/tabs/pages.
      */
@@ -201,7 +114,15 @@ public class DoctorDetailActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
-            return PlaceholderFragment.newInstance(position + 1);
+            switch(position){
+                case 0:
+                    return DoctorDetailFragment.newInstance("","");
+                case 1:
+                    return DoctorAppointmentFragment.newInstance("","");
+                case 2:
+                    return DoctorAppointmentFragment.newInstance("","");
+            }
+            return null;
         }
 
         @Override
