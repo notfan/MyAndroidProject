@@ -5,6 +5,7 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.TimeInterpolator;
 import android.animation.ValueAnimator;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -290,6 +291,7 @@ public class FloatingActionMenu extends ViewGroup {
     /**
      * Sets the layout of the ViewGroup dependent on the number of menu items as well as menu direction.
      */
+    @SuppressLint("RestrictedApi")
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         System.out.println("onLayout:" + changed);
