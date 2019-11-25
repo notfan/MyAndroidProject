@@ -3,14 +3,14 @@
     package="com.wor.smartdrugbox">
 
     <application
-        android:name=".SmartDrugBoxApplication"
+        android:name=".app.SmartDrugBoxApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -20,139 +20,139 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ReportActivity"
+            android:name=".ui.ReportActivity"
             android:label="@string/title_activity_report"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".AppointmentActivity"
+            android:name=".ui.AppointmentActivity"
             android:label="@string/title_activity_appointment"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".NoteActivity"
+            android:name=".ui.NoteActivity"
             android:label="@string/title_activity_note"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".DoctorActivity"
+            android:name=".ui.DoctorActivity"
             android:label="@string/title_activity_doctor"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ContactActivity"
+            android:name=".ui.ContactActivity"
             android:label="@string/title_activity_contact"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".TipActivity"
+            android:name=".ui.TipActivity"
             android:label="@string/title_activity_tip"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".SettingActivity"
+            android:name=".ui.SettingActivity"
             android:label="@string/title_activity_setting"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".HelpActivity"
+            android:name=".ui.HelpActivity"
             android:label="@string/title_activity_help"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".WeekViewActivity"
+            android:name=".ui.WeekViewActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".CellDetailActivity"
+            android:name=".ui.CellDetailActivity"
             android:label="@string/title_activity_cell_detail"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".ui.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.wor.smartdrugbox.MainActivity" />
+                android:value="com.wor.smartdrugbox.ui.MainActivity" />
         </activity>
         <activity
-            android:name=".DrugSettingActivity"
+            android:name=".ui.DrugSettingActivity"
             android:label="@string/title_activity_drug_setting"
-            android:parentActivityName=".CellDetailActivity"
+            android:parentActivityName=".ui.CellDetailActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.wor.smartdrugbox.CellDetailActivity" />
+                android:value="com.wor.smartdrugbox.ui.CellDetailActivity" />
         </activity>
         <activity
-            android:name=".CellSettingActivity"
+            android:name=".ui.CellSettingActivity"
             android:label="@string/title_activity_cell_setting"
-            android:parentActivityName=".CellDetailActivity"
+            android:parentActivityName=".ui.CellDetailActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.wor.smartdrugbox.CellDetailActivity" />
+                android:value="com.wor.smartdrugbox.ui.CellDetailActivity" />
         </activity>
         <activity
-            android:name=".AppointmentDetailActivity"
+            android:name=".ui.AppointmentDetailActivity"
             android:label="@string/title_activity_appointment_detail"
-            android:parentActivityName=".AppointmentActivity"
+            android:parentActivityName=".ui.AppointmentActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.wor.smartdrugbox.AppointmentActivity" />
+                android:value="com.wor.smartdrugbox.ui.AppointmentActivity" />
         </activity>
         <activity
-            android:name=".AppointmentSettingActivity"
+            android:name=".ui.AppointmentSettingActivity"
             android:label="@string/title_activity_appointment_setting"
-            android:parentActivityName=".AppointmentActivity"
+            android:parentActivityName=".ui.AppointmentActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.wor.smartdrugbox.AppointmentActivity" />
+                android:value="com.wor.smartdrugbox.ui.AppointmentActivity" />
         </activity>
         <activity
-            android:name=".NoteDetailActivity"
+            android:name=".ui.NoteDetailActivity"
             android:label="@string/title_activity_note_detail"
-            android:parentActivityName=".NoteActivity"
+            android:parentActivityName=".ui.NoteActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.wor.smartdrugbox.NoteActivity" />
+                android:value="com.wor.smartdrugbox.ui.NoteActivity" />
         </activity>
         <activity
-            android:name=".NoteSettingActivity"
+            android:name=".ui.NoteSettingActivity"
             android:label="@string/title_activity_note_setting"
-            android:parentActivityName=".NoteActivity"
+            android:parentActivityName=".ui.NoteActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.wor.smartdrugbox.NoteActivity" />
+                android:value="com.wor.smartdrugbox.ui.NoteActivity" />
         </activity>
         <activity
-            android:name=".DoctorSettingActivity"
+            android:name=".ui.DoctorSettingActivity"
             android:label="@string/title_activity_doctor_setting"
-            android:parentActivityName=".DoctorActivity"
+            android:parentActivityName=".ui.DoctorActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.wor.smartdrugbox.DoctorActivity" />
+                android:value="com.wor.smartdrugbox.ui.DoctorActivity" />
         </activity>
         <activity
-            android:name=".ContactDetailActivity"
+            android:name=".ui.ContactDetailActivity"
             android:label="@string/title_activity_contact_detail"
-            android:parentActivityName=".ContactActivity"
+            android:parentActivityName=".ui.ContactActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.wor.smartdrugbox.ContactActivity" />
+                android:value="com.wor.smartdrugbox.ui.ContactActivity" />
         </activity>
         <activity
-            android:name=".ContactSettingActivity"
+            android:name=".ui.ContactSettingActivity"
             android:label="@string/title_activity_contact_setting"
-            android:parentActivityName=".ContactActivity"
+            android:parentActivityName=".ui.ContactActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.wor.smartdrugbox.ContactActivity" />
+                android:value="com.wor.smartdrugbox.ui.ContactActivity" />
         </activity>
         <activity
-            android:name=".DoctorDetailActivity"
+            android:name=".ui.DoctorDetailActivity"
             android:label="@string/title_activity_doctor_detail"
-            android:parentActivityName=".DoctorActivity"
+            android:parentActivityName=".ui.DoctorActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.wor.smartdrugbox.DoctorActivity" />
+                android:value="com.wor.smartdrugbox.ui.DoctorActivity" />
         </activity>
     </application>
 

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.wor.smartdrugbox.ContactDetailActivity"
+    tools:context="com.wor.smartdrugbox.ui.ContactDetailActivity"
     tools:showIn="@layout/activity_contact_detail">
 
 </RelativeLayout>

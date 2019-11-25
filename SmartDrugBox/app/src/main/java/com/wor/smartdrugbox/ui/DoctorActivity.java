@@ -1,9 +1,8 @@
-package com.wor.smartdrugbox;
+package com.wor.smartdrugbox.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -16,6 +15,8 @@ import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+
+import com.wor.smartdrugbox.R;
 
 import java.util.ArrayList;
 import java.util.HashMap;

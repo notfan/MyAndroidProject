@@ -1,4 +1,4 @@
-package com.wor.smartdrugbox;
+package com.wor.smartdrugbox.app;
 
 import android.app.Application;
 

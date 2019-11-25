@@ -1,10 +1,7 @@
-package com.wor.smartdrugbox;
+package com.wor.smartdrugbox.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -14,13 +11,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class SettingActivity extends AppCompatActivity
+import com.wor.smartdrugbox.R;
+
+public class HelpActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_setting);
+        setContentView(R.layout.activity_help);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -47,7 +46,7 @@ public class SettingActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.setting, menu);
+        getMenuInflater().inflate(R.menu.help, menu);
         return true;
     }
 
@@ -86,8 +85,7 @@ public class SettingActivity extends AppCompatActivity
             intent.setClass(this, DoctorActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_help) {
-            intent.setClass(this, HelpActivity.class);
-            startActivity(intent);
+            //intent.setClass(this, HelpActivity.class);
         } else if (id == R.id.nav_note) {
             intent.setClass(this, NoteActivity.class);
             startActivity(intent);
@@ -95,7 +93,8 @@ public class SettingActivity extends AppCompatActivity
             intent.setClass(this, ReportActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_settings) {
-            //intent.setClass(this, SettingActivity.class);
+            intent.setClass(this, SettingActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_tip) {
             intent.setClass(this, TipActivity.class);
             startActivity(intent);

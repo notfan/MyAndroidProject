@@ -10,7 +10,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.wor.smartdrugbox.AppointmentDetailActivity"
+    tools:context="com.wor.smartdrugbox.ui.AppointmentDetailActivity"
     tools:showIn="@layout/activity_appointment_detail">
 
 </RelativeLayout>

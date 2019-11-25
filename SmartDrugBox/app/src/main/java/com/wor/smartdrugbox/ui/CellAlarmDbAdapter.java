@@ -1,13 +1,10 @@
-package com.wor.smartdrugbox;
+package com.wor.smartdrugbox.ui;
 
-import android.content.ContentValues;
 import android.content.Context;
-import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 
-import java.util.Calendar;
+import com.wor.smartdrugbox.db.DbAdapter;
 
 public class CellAlarmDbAdapter extends DbAdapter {
     private static final String TAG = "CellAlarmDbAdapter";

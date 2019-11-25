@@ -1,4 +1,4 @@
-package com.wor.smartdrugbox;
+package com.wor.smartdrugbox.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,12 +10,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-public class AppointmentDetailActivity extends AppCompatActivity {
+import com.wor.smartdrugbox.R;
+
+public class AppointmentSettingActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_appointment_detail);
+        setContentView(R.layout.activity_appointment_setting);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -25,7 +27,7 @@ public class AppointmentDetailActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.appointment_detail, menu);
+        getMenuInflater().inflate(R.menu.appointment_setting, menu);
         return true;
     }
 
@@ -38,14 +40,10 @@ public class AppointmentDetailActivity extends AppCompatActivity {
         Intent intent = new Intent();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_delete) {
-            return true;
-        }
-        else if (id == R.id.action_edit) {
+        if (id == R.id.action_finish) {
             return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
-
 }

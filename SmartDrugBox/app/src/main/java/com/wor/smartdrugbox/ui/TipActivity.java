@@ -1,10 +1,7 @@
-package com.wor.smartdrugbox;
+package com.wor.smartdrugbox.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -14,16 +11,16 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class WeekViewActivity extends AppCompatActivity
+import com.wor.smartdrugbox.R;
+
+public class TipActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_week_view);
+        setContentView(R.layout.activity_tip);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setLogo(R.mipmap.ic_avatar);
-        toolbar.setTitle(R.string.nick_name);
         setSupportActionBar(toolbar);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -49,7 +46,7 @@ public class WeekViewActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.week_view, menu);
+        getMenuInflater().inflate(R.menu.tip, menu);
         return true;
     }
 
@@ -79,7 +76,8 @@ public class WeekViewActivity extends AppCompatActivity
             intent.setClass(this, AppointmentActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_calendar) {
-            //intent.setClass(this, MainActivity.class);
+            intent.setClass(this, MainActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_contact) {
             intent.setClass(this, ContactActivity.class);
             startActivity(intent);
@@ -99,8 +97,7 @@ public class WeekViewActivity extends AppCompatActivity
             intent.setClass(this, SettingActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_tip) {
-            intent.setClass(this, TipActivity.class);
-            startActivity(intent);
+            //intent.setClass(this, TipActivity.class);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
