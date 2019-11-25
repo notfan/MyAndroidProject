@@ -43,7 +43,6 @@ public class MainActivity extends AppCompatActivity
 
         //set floating menu
         FloatingActionMenu menu = (FloatingActionMenu) findViewById(R.id.fab_menu_line);
-        menu.setmItemGap(48);
         menu.setOnMenuItemClickListener(this);
 
         //init data
